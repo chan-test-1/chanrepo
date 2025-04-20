@@ -1,0 +1,213 @@
+
+색상 표현 법
+
+tsxt color
+- 사용하기 간편하고 쉽다.
+- 색상이 한정적이다.
+"color: red"
+"color: blue"
+
+RGB(Red green blue)
+- 다양한 색상 사용가능
+- 사용하기 불편
+- a 값이 존재한다.
+"color: RGB(0~255, 0~255, 0~255)"
+             ----- ------ -----
+             red   green   blue
+             rgb(255, 0, 0)
+             rgb(255, 255, 0)
+             rgb(255, 255, 255)
+             rgb(0, 0, 0)
+"color: rgba(255, 255, 255, 0~1)" 투명도 rgba         
+
+16진수 표기법(00~FF) 
+- 가장 많이 사용한다.
+- 알파값이 뒤에 붇는다. 2A or 3a
+"color:rgb(80, 15, 80)
+           -- -- --
+           red green blue -> 00에 가까울수록 검점색이 된다.     
+#000000 -> #000 -> #0(0)0(0)0(0)
+#FFFFFF     
+#FF00002A
+
+---------------------------------------------
+
+=> 16진수를 제일 많이 쓴다.
+
+--------------------------------------------
+
+엔지니어 -> 여러분들 의사, 클리이언트의 의사
+=> EndUser, 이해 관계자, 디자이너의 의도대로 제품, 디자인 시스템 
+
+
+--------------------------------------------
+
+폰트
+텍스트 스타일 (자주 사용, 자연스럽게 익힘 가능성)
+- 색상(color)
+- 서체(font-family)
+- 굴기(font-weight)
+- 크기(font-size)
+- 줄간(line-height)
+
+텍스트 정렬 (자주 사용되지 않기에, 검색을 활용해서 구현)
+- text-wrap -> 줄바꿈
+*- text-overflow -> 텍스트가 부모요소 크기를 벗어났을때 어떻게 보여 줄것인지
+- white-space -> 공백, 줄바꿈을 개발자가 작성한대로 보여줄 것인지 
+- text-indent -> 첫 테스트 간격
+- text-justify -> 줄 주에 공백이 나타나면 왼쪽, 오른쪽, 양쪽 고루 펴질 것인지
+                  공백처리를 어떻게 할건지 속성
+*- test-align -> 텍스트 정렬
+-...
+
+------------------------------------------------------
+
+
+
+/************************** 여기서부터 소리 *************************/
+3월 8일 영상
+Prettier 라이브러리 . 저장 시 자동줄바꿈 (코드 포맷팅)
+
+---------표기법------------
+
+const buttonColor 
+
+파스칼케이스    SeongYong (파일명에 많이씀)
+
+카멜케이스      seongYong (변수를 표기) 일반적으로 제일 많이씀
+
+스네이크케이스  seong_yong (DB,SQL 대소문자 구분안되고 띄어쓰기 안되는곳 앞에 설명을 넣는경우도있음 nowon_leechani) 
+               SEONG_YONG (상수 : 변하지않는값)
+
+케밥케이스      seong-yong (class) 
+
+const let
+
+
+
+----------픽셀-------------
+
+화면을 구성하는 제일 작은 단위1픽셀  
+1920 x 1080 
+1픽셀 1920개 가로 , 1픽셀 1080개
+
+익스플로러 폰트 기본값은 16px 이라한다.
+
+F12 눌러서 원본을 건들지않고 style 부분 체크해제하거나 수정할 수 있다. (미리보기 및 css디버깅)
+
+----------폰트사이즈 종류----------
+px (절대적 크기, 가장많이 사용) 보통 젤많이씀 1px
+반응형웹
+em (부모의 폰트사이즈 크기 비율) 1em
+rem (html요소의 폰트사이즈 크기 비율, 적용범위가 너무크다.) 1rem
+% (부모 요소 대비 비율) 1%
+
+
+parent {
+    fontsize 16px;
+}
+
+child {
+    fontsize 2em  ->>> 32px
+}
+이런식
+
+-----------줄바꿈, ... 기능 및 관계------------
+style width : 200px 로 하면 자동줄바꿈
+white-space : nowrap 줄바꿈 안함.
+
+부모요소 width 200 설정하고 
+자식을 
+white-space: nowrap 주면 뚫어버림
+overflow: hidden 하면 뚫린건 안보이게함.
+text-overflow:ellipsis 로 주면 ... 이라고 생김
+
+
+css 관계 . 
+
+white-space: nowrap; 은 줄바꿈 안하고 넘어가게 해주는거야. 
+넘어간걸 ... 으로 바꿔주는게 text-overflow:ellipsis
+
+상식적으로 넘어가야 ... 이 생기지 . nowrap 을 안쓰면 줄바꿈이되는데 어떻게 ... 으로 표현하니.
+
+이런걸 관계라고해. 
+
+text-indent : 30px; 텍스트 시작 앞에 여백.
+
+
+꼭 개발자도구에서 적용해보구 반영하는걸 추천한단다.
+
+
+상속
+크기 (px,em,rem)
+기본적인 스타일 (size, weight, color)
+
+이정도만 알면된다.
+
+정렬 관련된 옵션은 지금 기억해봤자 다 까먹는다.
+사용하면서 익숙해지거나 검색해라
+가능하다라는 사실만 알고있자.
+html css 는 프로그래밍언어가 아니라 단순한 검색으로 다찾아진다.
+프로젝트 단위아니면 프론트엔드가 웬만하면 퍼블까지 다한다.
+
+
+----------- 서체 ------------
+
+//fontFamily.html 추가
+
+1. cdn (content delivery network)
+2. file download
+3. import
+
+fonts.google.com/selection  
+검색 : noto sans
+
+get embed code || download all 
+
+
+//link(embed code)
+embed code 에 써있는 걸 head부분에 붙여넣기하구
+
+style 은 뭘로 지정해야되는지 나와있다. 
+
+<style>
+    * { 
+        font-family: "Noto sans", sans-serif;
+    }
+</style>
+
+//import
+import 는 스타일 요소안에 쓴다.
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    * { 
+        font-family: "Noto sans", sans-serif;
+    }
+</style>
+
+
+import는 내가 원하는 css 파일의 스타일에 적용하는거다. (느림);
+
+
+// 파일 다운로드 
+day02/assets/fonts 에 다운받은 파일을 넣고
+style부분에 
+@font-face {
+    font-family: "Noto"; (이름자유)
+    src: url("./assets/fonts/NotoSans-Black.ttf");
+}
+
+font파일의 확장자 
+ttf (모든브라우저 지원, 용량큼)
+woff (권장사항, 거의 모든 브라우저 지원, 용량 살짝작음)
+woff2 (일부 브라우저 지원, 거의 최신폰트 , 용량 개작음)
+
+
+--  --
+다시한번 얘기하지만 화면을 만드는 명령어를 배우는거기다.
+프로그래밍을 하고있는게 아니다. 
+프로그래밍은 찾아도 안나오는게 많지만
+익숙해져서 검색안하고 쓰면 좋지만 
+지금 배우는것들은 이런게 있다만 알아라. 다외울수 없다.
+어 ? 나 css에서 줄바꿈 하고싶어.  (줄바꿈이라는 키워드만 생각해서 검색하면된다.)
+이런것들보다 div 영역잡는게 더 중요해.

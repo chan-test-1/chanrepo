@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow: auto;
+        /* overflow-y:scroll; */
+      }
+
+      /*overflow:auto or overflowY:scroll 내용이 넘어가면 스크롤을 만드는 css. 
+        가로스크롤은 카드뉴스처럼 오른쪽으 로 넘어가게끔 (의도) 하지않는 이상 존재하면안된다.*/
+
+      nav {
+        height: 60px;
+        background-color: orangered;
+      }
+
+      menu {
+        display: none;
+        background-color: orange;
+        transition: height 0.5s ease;
+        /*
+                ease -> 시작과 종료를 자연스럽게
+                linear -> 일정한 속도로
+                ease-in -> 천천히 시작했다가 빨라짐
+                ease-out -> 빨랐다가 천천히 종료
+                ease-in-out -> 천천히 시작해서 빨라졌다가 천천히 종료
+                커스텀 -> cubic-bezier(0.1, 0.7, 0.1,0.3) 초를 넣어서 느리게 빠르게 커스텀 할 수 있음.
+            */
+      }
+
+      header:hover > menu {
+        /*header가 hover됐을 때 menu css*/
+        display: 300px;
+        /* height: auto; */
+        display: block;
+        /* 
+            이렇게 높이 주는 행위는 굉장히 위험하다. 메뉴가 늘어나면 어떡할껀가...?
+            auto로 주고 내용물을 채워라. 아니면 자바스크립트 변수에저장했다가 마우스댔을때 반영하는.. 
+            */
+      }
+
+      /* 
+            지금 위에 메뉴에 마우스를 가져갔을 때 메뉴가 내려오는걸 구현하는데 왜 hover를 헤더에 거냐. 네브에안걸고? 
+            네브를 선택했을 떄 내려오게할 수 있다. 하지만 네브에서 마우스가 벗어나면 내려온 메뉴가 사라지기떄문에 부모인header를.
+        */
+
+      /* 
+            input 제목 이 22글자로 정의되어있었다. 근데 22자 이상으로 고객 요구사항이 나왔다.
+            그럼 글자를 뚫을지, 칸을 넓힐지, ... 을 만들게해서 마우스올렸을 때 풀제목이 나오게끔 할껀지 
+            꼭 얘기해야된다 디자이너한테. 
+        */
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav></nav>
+      <menu>
+        <div>가나다라마바사아자차카타파하</div>
+        <div>가나다라마바사아자차카타파하</div>
+        <div>가나다라마바사아자차카타파하</div>
+      </menu>
+    </header>
+  </body>
+</html>
+
+<!-- 슬라이드 캐러셀 ( 순서대로 하나씩 움직이거나 특정 갯수, 화살표)
+플랫리스트 스와이퍼 (사용자에 따라 움직임에 따라 자연스러움, 터치 슬라이드) -->
+
+<!--  
+css naming
+
+wrapper 하나의 요소
+<div class="banner-wrapper">
+    <div></div>
+</div>
+
+container 여러개의 요소
+<div class="banner-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div> 
+
+ -->

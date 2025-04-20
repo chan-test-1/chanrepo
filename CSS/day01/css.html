@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        P{
+            color: blue;
+        }
+        #inside {
+            color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="./외부.css">
+</head>
+<!--p#inside 입력하면 바로 태그 생김
+    내부는 head 태그 안에 써야한다.
+-->
+
+<!--
+ 외부 적용 방식의 중요한 점은 link의 순서에 따라 덮어 씌워질 수 있다.
+-->
+<body>
+    <p id="inline" style="color: red;">inline</p>
+    <P id="inside">inside</P>
+    <P id="outside">outside</P>
+</body>
+</html>

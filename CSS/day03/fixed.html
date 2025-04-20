@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+    <style>
+        .wrapper {
+            width: 920px;
+            margin: 0 auto; /* 가운데 정렬 */
+            background-color: blanchedalmond;
+            min-height: 100vh;
+        }
+
+        .wrapper > nav {
+            height : 60px;
+            background-color: brown;
+
+            /* absolute, fixed를 주게 되면 가로 길이 (widht) 를 부여해야된다.  부모랑 똑같이 주면 부모넓이.*/
+            /* position: fixed; */
+            /* width: 920px; */
+
+            position: sticky;
+            top: 0;
+            /* 0부터 sticky하겠다. */
+        }
+
+        .wrapper > main > .banner {
+            height: 300px;
+            /* padding-top: 60px; 위에 nav가 60px만큼 겹치기때문에  */
+            background-color: cornflowerblue;
+        }
+
+        .wrapper > main > .container {
+            height: 200vh;
+        }
+        
+        .wrapper > main > .container > aside {
+            width: 300px;
+            height: calc(100vh - 70px);  /* 100% 를 주면 부모요소 크기 대비  , *css reset 을 안해서 기본값이 있어서 10 더빼서 70px */
+            background-color: plum;
+            position:sticky;
+            top: 60px;
+        }
+
+       
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <nav></nav>
+        <main>
+            <section class="banner">123123</section>
+            <div class="container">
+                <aside></aside>
+                <section></section>
+            </div>
+        </main>
+    </div>
+  </body>
+  </html>

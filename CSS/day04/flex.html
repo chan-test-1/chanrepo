@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container{
+            display: flex;
+            /* 자식 요소를 가로로 정렬 inline-block 보다 훨씬 편하다!*/ 
+            border: 1px solid #00f;
+            width: 800px;
+            height: 600px;
+
+            /* ----------가로--------- */
+            justify-content: space-between; /*첫요소와 끝 요소가 부모에 닿아있는 상태로 동일한 간격 두기  === 제일 많이 쓰는것. 네이버 첫화면 최상단*/
+            justify-content: space-around;  /*모든 요소가 좌우에 동일한 여백 주기*/
+            justify-content: space-evenly;  /*첫요소와 끝 요소가 부모에 닿지 않은 상태로 동일한 간격 두기*/ 
+
+            justify-content: flex-start; /*왼쪽        flex-end 오른쪽    center 가운데*/
+            /* 자식 요소의 가로 정렬 속성 왼쪽,중앙,가운데*/ 
+
+            /* ----------세로---------- */
+            align-items: flex-end;
+            align-items: center;
+            align-items: flex-start;
+
+
+            flex-wrap: wrap; /* 부모가 800 자식이 200씩 5개 . 넘치는건 내릴 때.*/
+            gap: 8px; /* 간격준다 마진보다 편한듯 하지만 첫번째랑 끝은 안띄움. flex,grid에서만 동작*/
+            column-gap: 8px; /*옆*/
+            row-gap:8px; /* 아래위*/
+        }
+
+        .flex-item {  
+            width: 200px;
+            border: 1px solid #000;
+            
+            /* flex:2;     */
+            /* 
+                남은 요소를 다 차지해라 flex:2. flex-grow:1 도 마찬가지임         다 1씩 걸고 하나만 7 로 걸면 7만의 비율로 가져감
+                부모크기를 넘어갈 수 없다. 넘어가려면 부모가 800일때 5개의 요소에 min-width:200 을 다 먹이거나
+                flex-shirink:0 쓰면된다. 부모요소를 넘어가면 줄이는 비율 0으로주면 나는 안줄이겠다.
+                
+                grow 는 늘리는거 shirink 는 줄이는거! 
+            */
+
+        }
+
+        /* 자식요소 정렬 가로,세로*/
+        /* .flex-item4{
+            justify-self: flex-end;
+            align-self: flex-end;
+        } */
+
+
+    </style>
+</head>
+<body>
+
+    <!-- 
+        언제 flex를 사용해야할까 ?
+        보통 정렬의 대부분
+        하지만 쇼핑몰 상품 정렬 이런건 grid 쓰는게 좋다
+    -->
+    <div class="flex-container">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <!-- <div class="flex-item flex-item4">4</div> -->
+        <div class="flex-item">4</div>
+        <div class="flex-item">5</div>
+    </div>
+</html>

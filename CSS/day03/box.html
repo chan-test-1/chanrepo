@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width : 320px;
+            height: 160px;
+            border: 1px solid #000;
+        }
+
+        /* 요소 크기에 영향 x */  
+        .margin{
+            margin-bottom: 10px;  /* 위 요소와 아래요소에서 둘다 margin bottom , top 을 주면 더 높은 수치가 적용됨 (위,아래만) (좌우는 다 반영됨.) */
+            
+            /*             
+            margin : 크기 (4방향)
+            margin-{방향} : 크기
+            margin : 크기 크기 (위/아래, 좌/우)
+            margin : 크기 크기 크기 (위, 좌/우, 아래)
+            margin : 크기 크기 크기 크기 (위, 우, 좌, 아래) -- 시계방향
+
+            방향 : bottom , top, left, right 
+            */
+        }
+
+        /* 요소 크기에 영향 o */
+        .padding{
+            margin-top : 8px;
+            padding: 10px;
+            box-sizing: content-box; /* content 기준으로 size를 정한다 padding, border 미포함  */
+            box-sizing: border-box; /* border를 기준으로 size를 정한다 padding, border 포함*/
+        }
+
+        /* reset css (초기세팅) 구글링 한 리셋 css를 파일로 만들고 link (개발자마다 다 다름.)
+        <link rel="stylesheet "href="./css/rest.css"        <-- 링크 제일 위에 넣어야 덮어씌워지지 않음. 가장상단. 
+        */
+        /* *{
+            padding: 0;
+            margin : 0 ;
+            box-sizing: border-box;
+        } */
+    </style>
+</head>
+<body>
+    <div class="margin"></div>
+    <div class="padding"></div>
+</body>
+</html>

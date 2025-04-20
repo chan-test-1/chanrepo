@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      p {
+        font-size: 48px;
+        font-weight: bold;
+        animation: arrowRight 1s ease-in 1s infinite alternate;
+        /* 
+                1번째 인자 : 애니메이션은 만들고 이름을 넣어야된다. 애니메이션 만드는 css : keyframes 
+                2번째 인자 : 몇초동안 갈거냐
+                3번째 인자 : el
+                4번째 인자 : 딜레이 (몇초뒤에 시작할꺼?)
+                5번째 인자 : 반복여부 
+                6번째 인자 : 왕복여부 ( 안쓰면 편도임)
+             */
+      }
+
+      @keyframes arrowRight {
+        /* 0 ~ 100%      ->  두번 걸쳐 가면 50, 100  두번찍어야되며. 퍼센테이지는 시간이다. 3초면 100에 도달하고 50% 면 1.5에 도달한다.*/
+        /* form to */
+        30% {
+          /* 누적되지 않음. 30% 잠깐 바뀌고 to 로 가는길에 돌아간다. 유지하려면 to에도 red를 줘야함 */
+          color: red;
+        }
+
+        to {
+          transform: translate(100px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <p>></p>
+    </section>
+  </body>
+</html>

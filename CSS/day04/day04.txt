@@ -1,0 +1,64 @@
+position 복습.
+
+static : 기본 옵션 (움직일 수 없다)
+relative : 내 자신이 기준이되어서 움직일 수 있다. (absolute의 부모요소로 많이 쓴다.)
+absoulte : 절대위치 지정 방식, 가장 가까운 relative속성을 가진 부모 기준. ( 특정 요소에서 다른요소위에 올려야될때. 제일 강점은 겹칠 수 있다.) 
+★장바구니 아이콘 = relative 숫자=absolute right : 0 줘서 오른쪽에 붙이겠지
+fixed : 스크롤에 따라 위치가 고정 -> *뷰포트 기준. 화면 기준. (내가보는화면이 내려가도 상단에 고정되어있음.) (fixed는 화면 위에 붕떠있는 느낌이라 밑에껄 가림.)
+sticky : fixed의 단점을 보완하기위해 나옴. (특정 위치부터 static -> fixed로 변함. )
+
+
+저번시간에 쓴 <main> <nav> <section> 같은 시맨틱(semantic(의미)) 태그들은 보기 편하라고 만든 태그. 다른기능 없음. 정리된구조, 협업, 접근성을 위해 많이 권장됨.
+main(본문),nav(메뉴,링크목록),header(머리말),section(영역),article(독립된글 블로그글,뉴스기사등),footer(꼬리말)
+-----------------------------------
+display
+
+--display.html
+
+inline : 크기 지정이 불가능, 컨텐츠(내용) 영역만큼 크기가 고정.  아래, 위 , 다른요소들이랑 나란히 나온다.
+block : 한줄을 모두 차지하는 요소 (div, p)
+inline-block : 다음, 이전 요소와 이웃 할 수 있는, 크기 조정 가능
+
+<div></div>
+<div></div>
+한줄 씩 생긴다. (div가 block 속성을 갖고있기 떄문)
+
+<span>123</span> 
+<span>123</span>
+
+한줄에 둘다 생긴다. (inline속성을 갖고 있기 때문)
+
+
+<span style='width:300px'> 123 </span>  -> inline 스타일은 이게 안된대 그래서 나온게 inline-blcok
+
+
+네이버 캡처해서 만들어봐라.
+강의끝나고 찬이보고 구조 잡아보라해야함.
+
+https://chromewebstore.google.com/detail/image-downloader/cnpniohnfphhjihaiiggeabnkjhpaldj?hl=ko&pli=1
+이미지는 여기 다운 받아서 
+크롬 우측상단 확장프로그램 에서 써도되고
+
+flaticon 이라고 아이콘이미지 지원해주는곳 있다. (무료,유료) 
+유료인아이콘은 막쓰면안된대 내용증명날라온대
+
+----------------------------
+display: flex
+display: grid
+
+--- flex.html
+--- flex2.html
+--- grid.html
+--- grid2.html
+--- grid3-template.html
+
+flex와 grid에서만 작동하는 css 속성들이 존재.
+모던 css 레이아웃이라고함. 거의 모든 앱 웹이 flex와 grid 레이아웃을 쓴다고함.
+
+
+reset css 한번 설명해라 지훈아.
+
+
+
+
+

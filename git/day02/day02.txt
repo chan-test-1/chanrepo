@@ -1,0 +1,162 @@
+협업 + 코드리뷰  
+모의프로젝트로 협업하기.
+
+1. 팀장1, 팀원들로 구성.  -> 얘기하거나 논의하지 않을거니깐 부담스러워하지마.
+
+2. 팀장1, 오가나이제이션 생성 (계정에 소속되지않고 하나의 단체에소속. 회사계정이라 생각하면됨)
+3. 팀원들은 초대에 응함. (팀장님한테 계정보내주세요 ~ 하면 내 깃허브계정 보내주면됨.)
+4. 팀장의 주도하에 컨벤션을 정해야함
+    클레스 네이밍, 깃허브 커밋 메세지 컨벤션 등등 
+
+    페이지명 - 기능 - 인터페이스 
+
+    폴더명
+    파일명
+    표기법
+    
+    브랜치명은 features/기능명 이렇게 할거다.
+    커밋메세지는 features : 내용 ( https://github.com/gyoogle/tech-interview-for-developer/blob/master/ETC/Git%20Commit%20Message%20Convention.md )
+
+    정의하는 시간.
+
+5. 팀장이 프로젝트 구조를 생성해서 dev branch push
+6. 팀원들은 해당 프로젝트를 git clone을 받습니다.
+
+7. 각 팀장 및 팀원들은 서로 맡은 기능을 약식으로 작성합니다.
+8. dev 브랜치에서 생성한 브랜치에 push합니다.
+
+9. PR을 생성해서 코드 리뷰 과정을 진행합니다. (약식, 내용물, 예시 -- 원래 엄청 길게 한다고함)
+- 문서화의 중요성(기록).  어? 소스 왜이렇게 짰지? 를 방지하기위해 소스리뷰 . 이런건 이렇기때문에 못써서 이렇게 짰다.
+- 새로운기능 추가해주세요 는 쉽지만 기존에 짠 코드는 분석을 해야되므로 시간이 엄청 길어진다. 그러므로 문서화가 중요하다.
+- 문서화는 꼭 중요한 부분만. (적정선)
+
+10. 리뷰가 종료되면 병합 과정 거칠 예정.
+11. 한 팀원은 충돌 발생 시킬 예정 -> 충돌 해결 과정까지.
+----------------------------------------------------------------------------------
+
+깃 협업 시간.
+
+팀장1 
+팀원3
+
+
+----------팀장 ------------
+지난시간은 개인개정이였지만 
+이번에는 함께 협업할 수 있는 저장소 만드는거다. 
+
+깃헙 우측 상단 플러스 옆에 new organization 누른다.
+무료인 제일왼쪽거 선택 후 
+
+organization name : 아무렇게나 (jihoon-test)
+contact email : email 
+my persnal account 체크. (나중에 사업할거면 a business or institution) 선택.
+add-on 체크 X,
+다음.
+skip this step.
+
+우측 상단 그림아이콘 your organization 들어가면 내가 오너로 되어있는 git이 뜬다.
+
+
+people 탭 들어가서 우측 상단 Invate member ( 사용자 초대 ) name||emial  둘중 하나 받아서 초대.
+github에 쓴 이메일로 들어가면 메일와있을거다. 수락하면됨.
+초대할 때 member || Owner 선택하는게 있는데 Owner 로 하면 권한이 다 있는거고 아니면 없는거
+강사는 팀원을 member로 초대함.
+
+다 초대되면 member에 들어오게됨.
+
+
+팀장은 vscode day02 폴더안에 project라는 폴더 만들고 폴더구조 잡아줘야된다. 
+
+폴더 구조 안잡으면 누구는 main.html 을 pages 에 만들고 누구는 밖에 만들고
+
+그리고 assets 폴더 하나만들어서 아이콘, 이미지 넣자 ! 라는 회의도해야된다.
+
+정말 이런구조를 안만들면 그떄그말이 그거였어요? 라는 사람이 너무많기때문에.
+
+readme.md 생성.
+
+.gitkeep 은 폴더안에 아무것도 없으면 안올라가기떄문에 빈파일이라고 생각하면됨.
+
+.gitignore 에 assets 쓰면 assets 폴더는 안올라감 assets안에 하위폴더 말고 하위 파일들만 안올라가게끔 하려면 assets/*
+
+
+-- 원격 저장소 생성
+git hub 에서 your organization 들어가서 repository  들어가서 new repository 해서 이름 정하고 생성
+https 경로 중앙에 바로 나온다.
+
+이제 project 폴더 연결해보자.
+
+ctrl + shift + ` 하면 터미널 열린다 !
+
+1. 폴더 지정.
+2. 로컬 저장소 생성 (git init)
+3. 원격저장소랑 연결. git remote add orgin https://github.com/jihoon-test/project.git
+
+로컬저장소 생성했고 원격저장소 연결까지 했다.
+로컬저장소에 코드를 저장하고 -> 원격저장소에 push 를 하면된다.
+
+로컬저장소에 올리는걸 add, commit   원격저장소에 보내는건 push
+
+브랜치
+로컬저장소              원격저장소
+main             ->     main
+feat/board       ->     feat/board
+
+github 들어가면 원격저장소 project 클릭하면 
+메인인지 마스터인지 나옴.
+
+git push -u origin main
+
+git init 한 폴더, 브랜치 생성한 폴더를  vscode 웬만하면 따로 써라 브랜치 너무많이 만들어져있으면 헷갈리고 컨트롤 어려워
+
+
+코딩 왜 배워? AI 가 다해주는데?   
+유명한 사이트 하나라도있어? 
+안돼아직. 
+서폿은 너무 좋아. 1명이 5명 역할 해. 
+AI어씨스턴트 ( 개발 ) 로 쓰는건 너무 좋음. --- 배우는 과정에는 쓰지말래..
+
+문제 해결 
+
+1. 문제가 무엇인지 분석하고
+2. 자연어로 설계하고
+3. 아웃풋에서 입력 값으로 올라가는 것
+
+
+
+
+
+
+------------팀원------------------
+초대받은 팀원이 깃헙에 들어가면 코드는 있을거다.
+
+다운로드 받는 방법.
+
+최초 다운로드는 clone .  그다음 받는건 pull
+
+---------- clone 쓰려면 -
+받으려는경로 day02 밑에 project를 받아오려면 day02에 가서
+
+git clone https://github.com/jihoon-test/project.git 
+끝.
+
+
+---------- clone 안쓰고 최초다운로드 하게되면 -
+day02안에 project 만들고 cd project 해서 폴더바꾸고 git init 하고 , git remote add origin https://github.com/jihoon-test/project.git 해서 원격저장소 연결하고
+
+로컬에 git checkout -b main (브랜치 생성 후 이동, 최초 생성) 하고
+여기서 중요한건 원격저장소에 어떤 브랜치를 받을건지 알고있어야함.
+git pull origin main 하면 끝.
+
+
+-------------------------
+이 이후부터는 main 절대 건들면 안된다.
+
+
+
+main > dev > board
+
+
+board 수정했고 , dev 에 병합하려면
+
+git dev merge board

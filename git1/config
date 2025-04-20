@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[branch "main"]
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/main
+[remote "origin"]
+	url = https://github.com/jihoon120/test-1.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "feat/board"]
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/feat/board
+[branch "dev"]
+	vscode-merge-base = origin/main

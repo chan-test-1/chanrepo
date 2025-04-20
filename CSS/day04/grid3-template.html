@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid {
+        display: grid;
+        grid-template:
+          "header header" 200px
+          "side section1" 200px
+          "side section2" 200px
+          "fotter fotter" 200px
+          /200px 400px;
+
+        /* 
+                flex : 대부분의 것들은 플렉스 레이아웃으로 구현
+                grid : 사각형 형식의 배치, 제품 n단 배열, 반응형(기기별 대응) 구현시 위치 변화가 큰 경우 (뒤죽박죽 사각형 배열이 창이 줄어서 한줄로 와야된다거나..)
+
+                강사는 근데 그리드 이렇게 구현안한단다. 그냥 모바일웹 따로 만든다고한다. m.naver.com 처럼.
+                모바일 버전은 적응형 웹이라고 한다. (모바일에 맞춰 필요없는거 다 뺀거.)
+                반응형은 반응해서 줄어드는거고.(반응형은 media query 쓰면된다.)
+                반응형까지 하면 html code 진짜 5천줄 만줄 넘어간다.. 
+
+                */
+      }
+
+      .a {
+        grid-area: header; /* gird-area 는 명칭주는것 */
+        background-color: aqua;
+      }
+
+      .b {
+        grid-area: side;
+        background-color: brown;
+      }
+
+      .c {
+        grid-area: section1;
+        background-color: chocolate;
+      }
+
+      .d {
+        grid-area: section2;
+        background-color: yellow;
+      }
+
+      .e {
+        grid-area: fotter;
+        background-color: rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="grid-item a">1</div>
+      <div class="grid-item b">2</div>
+      <div class="grid-item c">3</div>
+      <div class="grid-item d">4</div>
+      <div class="grid-item e">5</div>
+    </div>
+  </body>
+</html>

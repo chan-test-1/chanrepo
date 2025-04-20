@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        margin: 10px;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .scale:hover {
+        /* hover는 마우스 올렸을 떄 */
+        transform: scale(
+          1.2
+        ); /* 1.2배 -> 20% 커진다.(전체방향)  0.5 -> 50% 축소*/
+      }
+
+      .rotate:hover {
+        transform: rotateX(180deg); /* x축 180도 회전 */
+        /* 
+                transform: rotateY(180deg);  y축 180도 회전  
+            */
+        transition: transform 2s;
+      }
+
+      .translate:hover {
+        transform: translate(
+          50px,
+          50px
+        ); /* x축 가로 50px y축 세로 50px   반대는 음수를 주면된다.*/
+        /* 
+                transform: translateX(50px);   가로
+                transform: translateY(50px);   세로
+            
+            */
+        transition: transform 2s;
+        /* 1번째 값으로 어떤 값에 반영할꺼냐? ALL이라고 하면 여기서 쓰는 모든 속성에 거는거고, transform만 쓰면 transform만 적용 2번째는 몇초동안 적용할거냐.*/
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="scale"></div>
+      <div class="scale"></div>
+      <div class="rotate">rotate</div>
+      <div class="translate"></div>
+    </section>
+  </body>
+</html>

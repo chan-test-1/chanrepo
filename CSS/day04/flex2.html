@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .flex{
+            display: flex;
+            width: 800px;
+            height: 600px;
+            border: 1px solid #00f;
+            align-items: center;
+            justify-content: center;
+
+            /* justfy, align 은 display flex or grid 일때만 정렬하는건데 flex 는 div를 가로로 만드는데 세로로 가운데정렬하고싶으면*/
+            flex-direction: column;  /* 세로정렬*/
+            /* 이렇게 바꾸면 align(세로 -> 가로), justify(가로->세로) 뒤바뀜 */
+
+
+            /*
+                flex (유연한) 유연한 레이아웃 배치를 위해 탄생한 모던 css레이아웃
+                정렬, 이동에 많이 사용
+                원래 HTML 기본 속성이 세로로 나열 -> 가로로 나열하고싶어 ~ 이러면 flex 쓰면된다.
+                정렬할꺼야 ~ 이동할꺼야 ~
+            */
+        }
+
+        .flex-item{
+            width: 200px;
+            height:100px;
+            border: 1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+    
+</body>
+</html>

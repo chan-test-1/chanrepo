@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #f00;
+        }
+
+        #static {
+            position: static;
+            /* static은 기본 값.   뭐 아무것도 안함 머리에서 지워 */
+        }
+
+        #relative {
+            position: relative;
+            /*html 요소가 기준이 되어 이동이 가능 */
+            left: 50px;
+            /* 왼쪽에서 밀기 */
+            bottom: 30px;
+        }
+
+        #absolute {
+            position: absolute;
+            /* 가장 가까운 relative 요소 기준 위치 */
+            width: 30px;
+            height: 30px;
+            background: hotpink;
+            /* top: 50%;
+            left: 50%; */
+            top: 0;
+            /* top과 left는 왼쪽 꼭지점 기준 */
+            transform: translate(-50%, -50%);
+            /* transform 쓰면 정중앙에 위치. -50% 는 왼쪽꼭지점기준 정중앙에 위치시킨 애의 세로 50% 빼고 가로 50% 빼면 정중앙에 위치함.
+            
+            /* relative 가 없으면 viewport 기준이므로 제일위로 올라간다. absolute는 relative랑 같이 사용하는게 좋다.*/
+
+            /* 가운데 정렬 할 수 있고, 다른요소위에 요소를 겹칠 수 있음 modal창 (오늘 하루동안 보지 않기.) */
+            /* 절대 위치지정 fixed, absoulte */
+
+            /* 잘 안된다는 사람 나옴. class 는 .  id 는 # */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="static">static</div>
+    <div id="relative">relative
+        <div id="absolute">absolute</div>
+    </div>
+</body>
+</html>

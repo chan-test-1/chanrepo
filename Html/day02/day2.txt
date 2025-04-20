@@ -1,0 +1,25 @@
+
+
+[MDN] HTML 요소
+https://developer.mozilla.org/ko/docs/Web/HTML/Element/a
+
+
+(자주사용하는 요소) <-익숙하게 만들고 구조를 만들줄 알아야 한다.
+
+div
+a
+input, form
+img,vide, audio
+table
+ui/li <-리스트 태그
+sementic
+
+(편의성 요소들)
+dialog
+datalist
+
+
+index <-색인, 가장 첫번째 페이지, 검색하기 쉽게 하는 페이지
+
+느낌표 치고 Enter 기본 요소들 나옴
+

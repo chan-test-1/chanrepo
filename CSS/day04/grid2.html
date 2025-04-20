@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .product-grid{
+            display: grid;
+            grid-template-columns: repeat(6, 200px);
+            gap:8px;
+
+            
+            /*
+                사이즈 규격표, 브레이크포인트는 디자이너가 해준다. 
+                규격표가 없다? 우리는 지원안함. 무조건 디자이너와 논의.
+
+                mobile small, medium, large ~ 767
+                tablet  767~ 1200
+                desckotop
+            */
+
+            /*반응형 (mediea queries)*/
+
+            /* 1000~1440px까지는 grid 컬럼 5칸 1440 넘어가면 위에 설정해놓은 6칸.*/
+            @media screen and (min-width:1000px) and (max-width: 1440px){
+                grid-template-columns: repeat(5, 200px);
+            }
+
+            /* 0~1000px까지는 grid 컬럼 3칸 */
+            @media screen and (max-width: 1000px){
+                grid-template-columns: repeat(3, 200px);
+            }
+
+            /* 0~600px까지는 grid 컬럼 1칸 */
+            @media screen and (max-width: 600px){
+                grid-template-columns: repeat(1, 200px);
+            }
+
+            /* 작은 사이즈를 밑으로 놔야 반영된다!! */
+
+            /* 개발자도구에서 디바이스별 테블릿 및 핸드폰 사이즈 볼 수 있다. */
+
+            /* 
+                grid row를 디바이스 크기 별로 조정함으로써 사용자에게 한 로우 당 원하는 숫자의 아이템을 보여줄 수 있다. 
+            */
+        }
+
+        .product-grid-item {
+            background-color: #d9d9d9;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="product-grid">
+        <div class="product-grid-item">
+            <img src="../day03/images/화면 캡처 2025-03-08 172135.png" height="100px";/>
+            <p style="color: yellowgreen; margin: 0;">연예인</p>
+            <p style="font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque aut provident distinctio expedita facilis, repellendus asperiores culpa reprehenderit. Possimus quia similique minus fugiat veniam quis! Ipsa quos tempore asperiores provident!</p>
+        </div>
+        <div class="product-grid-item">
+            <img src="../day03/images/chanel.jpg" height="100px"; width="150px"/>
+            <p style="color: yellowgreen; margin: 0;">샤넬백</p>
+            <p style="font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">전세계에서 가장 대표적인 패션 하우스[3]이며 많은 여성들에게 샤넬은 특별한 의미가 있는 여성적인 이미지가 강한 명품 브랜드로 꼽힌다. 전설의 디자이너인 코코 샤넬이 자기 이름을 내걸고 시작한 브랜드다. 브랜드 엠블럼은 서로 반대를 바라보며 겹쳐진 두개의 C다. 이는 Coco Chanel 에서 비롯되었다.</p>
+        </div>
+        <div class="product-grid-item">3</div>
+        <div class="product-grid-item">4</div>
+        <div class="product-grid-item">5</div>
+        <div class="product-grid-item">6</div>
+    </div>
+</body>
+</html>
