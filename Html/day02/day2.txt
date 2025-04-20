@@ -23,3 +23,25 @@ index <-색인, 가장 첫번째 페이지, 검색하기 쉽게 하는 페이지
 
 느낌표 치고 Enter 기본 요소들 나옴
 
+
+conflict(충돌) 설명해라 지훈아.
+
+병합 및 pull 할 때 충돌 시 
+-- 내꺼 , 니꺼, 둘다 메세지뜬다.
+
+
+main 브랜치에서(git checkout main) dev 브랜치의 변경 사항을 main 브랜치로 병합하는 것. 
+git merge dev
+
+git merge --abort (merge 취소)
+
+
+domain 만드는 사이트 ! GoDaddy 
+
+ seongyong.co.kr 이런거 치면 월 3만원
+ 비싼 도메인들은 13만원 
+ 
+ 유니크한 ai.com 이런건 천몇백억에 팔렸댄다...
+
+
+ 우리가만든 organization 에 들어가서 레파지토리 들어가서 setting 들어가서 pages 메뉴 들어가면 url 만들 수 있고 누구나 접속할 수 있게 된다.
