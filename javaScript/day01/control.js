@@ -53,4 +53,66 @@ if (price < coin) { // 투입된 금액이 콜라의 가격보다 커요 -> 콜�
 */
 
 
+// if(조건식) code
+// if(조건식)
+//      code
 
+// if( a===5)
+//      console.log(a)
+
+// if문 아래나 옆에 한줄만있으면 {} 를 생략할 수 있다.
+
+// const a=4
+
+if (a>5){ 
+
+} else if (a>2){
+
+} else if (a>1){
+
+} else {
+
+}
+
+// else if 가독성이 좋지 않기 때문에
+// if문을 여러번 사용하는 것을 권장
+
+if(a===5){
+    return console.log('5');
+}
+
+if(a===4){
+    return console.log('4');
+}
+
+// 분기가 발생 (경우에 따라 실행해야하는 코드 및 결과 값이 다를 때)
+// 조건식 ( >, <, ===, ||, &&) 
+// return을 안쓰면 if문을 계속탄다.
+
+
+// if 문은 조건에의한.    switch문은 값에 따라
+
+let month = 2
+// switch(변수명)
+switch(month){
+    case 1:
+        console.log("1월")
+        break;
+    case 2:
+        console.log("2월")
+        break;
+    case 3:
+        console.log("3월")
+        break;
+    default:
+        console.log("범위에 맞는 달을 입력해주세요.")
+        break;
+}
+
+// if(month === 2){}
+// if도 값에 의해서 분기를 결정할 수 있지만
+// 만약 값에 종류가 많다면 switch 문을 활용하는 것이 더 좋은 가독성.
+// if문 안에 if문이 있어도 가동석이 좋지 않다.
+// switch문은 조건식이 안된다. month > 2 (x)
+// switch문은 값이 많을 때 if문 12개 쓰면 보기안좋자나
+// return을써도되지만 break를 많이 쓰는 추세. 안쓰면 뒤에 값도 같이 출력된다.
