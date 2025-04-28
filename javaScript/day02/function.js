@@ -1,3 +1,26 @@
+/*  기존소스
+
+let isError = true;
+const coin = 5000;
+const price = 1000;
+const charge = coin - price;
+
+
+if (isError || coin < price) {   
+    return console.log('코인', coin); 
+} 
+
+if (coin === price){ 
+    return console.log('콜라') // 콜라만 출력
+}
+
+if (price < coin) { 
+    return console.log('콜라', charge)
+} 
+*/
+
+
+
 // 사용자의 투임금액 -> 바뀔 수 있다.
 // isError -> 바뀔 수 있다.
 // price -> 내부적인 실행 코드가 바뀌지 않으면 바뀌지 않는 값.
@@ -32,30 +55,17 @@ coke(1000, false)
 coke(500, false)
 coke(1000, true)
 
+
+//이렇게 변수에 결과값을 담으려면. coke 에서 반환값을 꼭 줘야된다 이거 설명해라 ! return!!! 언제쓰는지!!
+let money = coke(5000, false) // 4000 return charge
+money = coke(1000, false) // undefined  
+money = coke(500, false) // 500   return coin
+money = coke(1000, true) // 1000 return coin
+
 // 다시 한번 말하지만 자바스크립트 함수 생성의 주체는 본인.
 // 내가 필요한 값을 지정, 내가 원하는 값을 출력
 // 모범답안이 없다. 강사가 지정한게 아니다!
-
-
-/*  기존소스
-
-let isError = true;
-const coin = 5000;
-const price = 1000;
-const charge = coin - price;
-
-
-if (isError || coin < price) {   
-    return console.log('코인', coin); 
-} 
-
-if (coin === price){ 
-    return console.log('콜라') // 콜라만 출력
-}
-
-if (price < coin) { 
-    return console.log('콜라', charge)
-} 
-*/
+// 함수의 가장 큰 장점은 기능(연산) 재사용!  동작에 맞게 함수명작성해야 협업하는 개발자들이 사용.
+// 반환 여부 선택하기(return)
 
 
