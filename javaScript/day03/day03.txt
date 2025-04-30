@@ -164,6 +164,6 @@ price 는 key ,  20,000 은 value ! 이 한쌍을 property
 object.js
 
 quizz.js
-
+정답은 quizResult.js
 --------------------------------
 다음시간은 배열 !!! 강사님과 마지막 시간 !!!!
