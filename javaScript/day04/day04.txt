@@ -67,7 +67,21 @@ const numberArray = [1,2,3,4,5]
 배열 (순서를 보장하는 데이터의 집합) - 어떤것이든 들어갈수있다.객체를 넣을 수도있다.
 
 const post = {}
-const postList = {post, post, post, post}
+const postList = [post, post, post, post]
+
+const seongyong = {
+    age : 20, 
+    height: 190
+}
+
+seongyong.age 
+
+const seongyongArr = [20, 190]
+seongyongArr[0]
+
+배열은 순서(index)로 원하는 값에 접근
+객체는 Key로 원하는 값에 접근.
+명확한 네이밍이 일표한경우 객체, 아니면 배열.
 
 백엔드가 주는 데이터가 모두 배열이 많다 ! 배열안에 객체 !
 
@@ -164,9 +178,61 @@ ex)
 
 ------------------------------------
 
-join + split(배열 관계된건 아님, string)
+join + split(배열 관계된건 아님, string)     // join 배열을 문자로 , split 문자를 배열로
+
+-join-
+배열안의 모든 요소를 이어서 문자열로 반환
+
+const phoneNumberArr = [010, 1234, 1234]
+
+"010-1234-1234" // 배열을 문자로 
+phoneNumberArr.join('-')
+
+phoneNumberArr.join()
+"01012341234"
+
+-split-
+"010-1234-1234".split('-') // 하이푼 기준으로 짤라서 배열을 만듬.
+["010", "1234", "1234"]
+
 
 ------------------------------------
 
+slice
+    배열의 특정 부분에 접근할 때
+    const arr = [1,2,3,4,5] 
+    arr.slice(startIndex, endIndex직전까지)
+    arr.slice(2, 4) // [3,4]
+    arr.slice(2) [3,4,5]
+
+    const sliceData = arr.slice(-1, startIndex 직전까지)  // 뒤에서부터 가져오고 싶을 때. -1은 젤 뒤라고 생각해라.
+    
+splice
+    원본 배열 훼손
+    특정 구간을 제거하거나 대체할 때.
+
+    arr.splice(startIndex, count, item1, item2, ...) 
+
+    startIndex  , count : 첨부터 몇개까지 없앨 꺼냐.
+    arr.splice(1,3)  // 1번부터 3번까지 제거.
+    arr.splice(1,3,'안','녕',하,세,요)  // [1,'안','녕','하','세','요',5]
 
     
+
+
+reverse //반전, 뒤집는것.
+    원본 배열 훼손
+    
+    arr.reverse()
+    // [5,4,3,2,1]
+
+    //원본은 다른곳에서 쓰고있을 수 있으므로 직접 건들지말구 복사해서 쓴다.         
+    const temp_arr = [...arr] //복사본 생성. 얕은복사.
+    temp_arr.reverse();
+
+    const temp_arr = arr; 로 하면안된다. 이건 참조(같은주소)라서 원본이 같이 바뀐다.
+
+
+--------------------------------------
+
+arr02.js
