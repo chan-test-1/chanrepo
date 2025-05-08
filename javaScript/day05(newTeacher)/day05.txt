@@ -1,0 +1,28 @@
+선생님 바뀌었다. !!!!!!!!!!!!!!!!!
+
+19일 강의 계속 3시간까지 javaScript 첨부터 복습. 깃설치 다시. 강사는 workspace 새로만들었지만 나는 여기다 계속 쓴다.
+
+javaScript문서로 정리된거 보여주면서 강의하니깐. 같이 보면서 다시 설명해라.
+
+환경변수 설정하는것도 알려줌 이건 나도알고있는거니깐 설명해줘라.
+
+
+
+- 새로운것 -
+
+this 객체란
+
+window 라는애를 가지고있고 여기에는 alert,confirm 등 .
+
+원래는 this.alert 이란다.
+
+node에서는 this가 global .
+
+
+function showThis(){
+    console.log(this);
+}
+
+showThis();
+
+-- forArray.js
