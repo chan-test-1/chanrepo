@@ -104,7 +104,15 @@ document 메서드 소개
 
 1. document.write()
 
-HTML 
+HTML 문서나 텍스트에 HTML 요소를 직접 삽입 (prompt.html 에서 한것처럼.)
 
-2. 
+2. document.getElementById()
+
+HTML 태그 ID 에 접근해서 변경 할 수 있다. 
+--getElementById.html
+
+3. document.getElementByClassName() 
+
+
+
 
