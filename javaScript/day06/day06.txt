@@ -109,10 +109,63 @@ HTML 문서나 텍스트에 HTML 요소를 직접 삽입 (prompt.html 에서 한
 2. document.getElementById()
 
 HTML 태그 ID 에 접근해서 변경 할 수 있다. 
+-- 특정 아이디 이름을 가진 요소를 반환 (단일)
 --getElementById.html
 
-3. document.getElementByClassName() 
+
+
+
+3. document.getElementByClassName()
+-- 특정 클래스 이름을 가진 요소들 반환 (복수, 배열형태로) 
+
+4. document.getElementByTagName()
+-- 특정 태그를 가진 모든 요소를 반환 (복수, 배열형태로)
+
+--getElementByClassName.html (className,tag)
 
 
 
 
+5. document.querySelector()  -- **********
+
+전달되는 인자의 css 요소와 일치하는 첫번째 요소를 반환
+
+6. document.querySelectorAll() -- **********
+전달되는 인자의 css 요소와 일치하는 모든 요소를 반환
+
+-- querySelector.html
+
+
+7. document.createElement()
+새로운 HTML 요소를 동적으로 생성.
+
+8. document.createTextNode();
+
+텍스트 노드(단순한 텍스트)를 생성
+진짜 단순히 텍스트만 들어가고 div태그나 span이나 P로 감싸져있지 않은.. 텍스트.
+html 요소 가 중요한 자바스크립트인데 요소없이 텍스트만 쓰는것이므로 잘 사용하지않음.
+
+-- createTextNode.html
+
+9. document.body
+문서의 바디 요소를 반환.
+
+-- htmlElement.html
+
+10. document.title
+
+페이지의 제목을 가져오거나 변경.
+-- title.html
+
+11.  document.forms
+문서 내 모든 폼 요소를 반환.
+-- documentForm.html
+
+12.documnet.location
+현재 페이지의 URL을 가져오거나 변경.
+-- documnetLocation.html
+
+13. document.getElementByName
+
+
+getElementByName.html

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector</title>
+    <style>
+        .message {
+            color: blue;
+            font-size: 32px;
+        }
+
+        #msgId {
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p>태그</p>
+    <p class="message">클래스</p>
+    <p id="msgId">아이디</p>
+    <div>
+        <p class="all">한번에 변경해봐</p>
+        <p class="all">한번에 변경해봐</p>
+        <p class="all">한번에 변경해봐</p>
+        <p class="all">한번에 변경해봐</p>
+    </div>
+    <script>
+        // querySelect는 해당되는 요소 첫번째 하나만 가져온다.
+        
+        // 태그
+        let element = document.querySelector('p');
+        element.textContent= "단락의 내용 변경"
+
+        // 클래스
+        let elementClass = document.querySelector('.message');  
+        elementClass.textContent= "class 단락의 내용 변경"
+
+        // 아이디
+        let elementId = document.querySelector('#msgId'); 
+        elementId.textContent= "id 단락의 내용 변경"
+
+        // 클래스 올 -- 여러개를 선택하므로 배열로 들어옴.
+        let elementAll = document.querySelectorAll('div .all')
+
+        //foreach 는 각 배열요소에 순차적으로 접근해서 함수를 실행시킨다. (화살표 함수응용)
+        elementAll.forEach((item, index) => {
+            item.textContent= `한번에 변경했따. ${index + 1}`
+            item.style.color= "purple"
+            item.style.fontSize= "20px"
+        })
+        /* elementAll.forEach(function(item, index) {
+            item.textContent= "한번에 변경했따."
+            item.style.color= "purple"
+            item.style.fontSize= "20px"
+        }) */
+            
+        
+    </script>
+</body>
+</html>

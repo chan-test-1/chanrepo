@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementByClassName</title>
+</head>
+<body>
+    <p class="hello">안녕하세요!</p>
+    <p class="hello">안녕하세요!</p>
+    <p class="hello">안녕하세요!</p>
+    <p class="hello">안녕하세요!</p>
+    <nav>바꿔봐</nav>
+    <script>
+        let element = document.getElementsByClassName("hello");
+        // className 과 태그는 여러개 선택할 수 있어서 배열 형태로 들어온다.
+        let element2 = document.getElementsByTagName("nav");
+
+        /* 클래스네임과 태그를 이용하여 텍스트와 색상을 변경해보자. */
+        //textContent = 'Hello, World'
+
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- for(let i=0; i<element.length; i++){
+            element[i].textContent = 'Hello, World'
+            element[i].style.color='red'
+        }
+
+        let element2 = document.getElementsByTagName("nav");
+        element2[0].textContent = 'hello World' -->
