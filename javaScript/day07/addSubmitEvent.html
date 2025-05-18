@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="username" placeholder="사용자 이름"/>
+        <button type="submit">제출</button>
+    </form>
+    <script>
+        const form = document.forms[0];
+        form.addEventListener('submit', function(event){
+            console.log('event',event)
+            console.log('form',form.username.value)
+            if(form.username.value !== 'jihoon'){
+                event.preventDefault(); 
+                alert('잘못된 정보가 입력되었습니다.');
+                // return false를 해서 제출이 안되도록(url에 username이 파라미터로 안던져짐.) 하는 방법이 있고 
+                // event.preventDefault (폼제출, 드래그, 마우스 우클릭 등의 기본동작을 막음) 를 써서 막는법도있다.
+            } else {
+                alert('폼이 제출되었습니다.');
+            }
+        })
+    </script>
+</body>
+</html>

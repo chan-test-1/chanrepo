@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return doSubmit(this)">
+        <input type="text" name="name" palceholder="이름">
+        <button type="submit">제출</button>
+    </form>
+    <script>
+        function doSubmit(target){
+            /* onsubmit의 this 는 자기자신 form태그를 말하는거고. target.name 을 찍어보면 name이라는 name을 갖은 애를 호출한다. 거기의 값을 가져오려면 target.name.value*/
+            console.log(target.name.value)
+            if(target.name.value === 'jihoon'){
+                return true;
+            }
+            
+            return false;
+
+            /*  onsubmit 에서 return을 쓰고, dosubmit함수에서 return false 를 써야 제출이 안됨. url에 파라미터도 안넘김. 그래야 콘솔이 찍혀서 일단 이렇게 함. */
+        }
+    </script>
+</body>
+</html>

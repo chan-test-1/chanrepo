@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" 
+        onfocus="this.style.backgroundColor='lightyellow'"
+        onblur="this.style.backgroundColor='white'"
+        />
+
+    <script>
+        function onfocus(){ // 포커스가 갔을 때
+            console.log("keyDown!!!")
+        }
+
+        function onblur(){ // 포커스 벗어날 때
+            console.log("keyPress!!!")
+        }
+        
+    </script>
+    
+</body>
+</html>

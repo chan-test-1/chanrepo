@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id ='textExample'>이것은 <strong>강조된</strong> 텍스트입니다.</div>
+    <button onclick="changeText()">텍스트 변경</button>
+
+    <script>
+        function changeText(){
+            const element = document.getElementById("textExample")
+            alert(element.innerText)
+            element.innerText = '이것은 <strong>새로운</strong> 텍스트입니다.'  // 태그를 넣어도 문자열로 인식. &lt(왼꺽새) &gt(우꺽새) 로 꺽새가 변환되어서 인식함.
+        }
+    </script>
+</body>
+</html>

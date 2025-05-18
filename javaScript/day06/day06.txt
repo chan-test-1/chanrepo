@@ -166,6 +166,8 @@ html 요소 가 중요한 자바스크립트인데 요소없이 텍스트만 쓰
 -- documnetLocation.html
 
 13. document.getElementByName
+특정 이름을 가진 모든 요소를 반환 (복수, 배열형태로)
+--getElementByName.html 
 
 
-getElementByName.html
+

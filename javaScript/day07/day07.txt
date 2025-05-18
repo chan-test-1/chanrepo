@@ -1,0 +1,126 @@
+14. document.with
+with 구문이란?
+코드 블록내에서 특정 객체를 임시적으로 참조하도록 함.
+객체를 명시적으로 지정하지 않고도 그 객체의 속성에 접근할 수 있도록 함.
+
+with(window)
+{
+    alert('helo');
+}
+
+이것처럼 window 객체를 넣으면 window.alert을 window. 없이 쓴다.
+
+ex)
+let obj = {
+    a: 1,
+    b: 2
+}
+with(obj) {
+    //obj 내에 속성 또는 메서드를 마치 전역변수처럼 사용할 수 있음.
+    onsole.log(a);
+}
+
+-- documentWith.html
+
+
+
+----------------------------------
+
+DOM 요소 작성
+
+1. innerText
+innerText 는 요소의 텍스트 콘텐츠를 가져오거나 설정
+HTML 태그를 무시하고 순수한 텍스트를 가져옴.
+
+--innerText.html
+
+2. innerHtml
+- 요소의 HTML 콘텐츠를 가져오거나 설정
+- HTML 태그를 포함한 문자열을 다룰 수 있다.
+-- innerHtml.html
+
+3. className
+className은 요소의 클래스 속성을 문자열로 가져오거나 설정
+-- className.html
+
+4. style
+- 요소의 인라인 스타일을 설정하거나 가져옴.
+
+
+---------------------------------
+이벤트 핸들러란?
+- HTML 요소에서 발생하는 특정 이벤트(클릭, 로딩, 포커스 등)를 처리
+- 여러개 등록 시 처음에 지정된 핸들러만 유효.
+ex)
+buton onclick="alert('안녕하세요')" onclick="changestyle()" onclick="alert('감사합니다.')"
+-- 안녕하세요만 뜸.
+
+자주 사용하는 이벤트 핸들러
+
+- 클릭 이벤트(onclick)
+    많이 사용했으니 넘어간다.
+    클릭 했을 때.
+
+- 마우스오버/아웃 이벤트(onmouseover, onmouseout)
+    onmouseover : 마우스를 위로 올렸을 때 발생.
+    onmouseout : 마우스를 위로 올렸다 밖으로 나갈 때 발생.
+-- onmouseover.html    
+
+- 폼 제출 이벤트 (onsubmit)
+    폼태그로 감싸서 name을 쓰면 제출할 때 name 의 값이 날라간다. url뒤에 파라미터로 붙는다. (백엔드 배울 때 할 예정.)
+    return 함수, 함수에 return false 로 써야 실행이안된단다.
+
+-- onsubmit.html
+
+- 페이지 로드 이벤트 (onload)
+    페이지가 로드 된 후 실행하는 이벤트
+-- onload.html
+
+
+- 키보드 입력 이벤트 (onkeydown, onkeypress, onkeyup)\
+-- onkey.html
+
+- 포커스 이벤트 (onfocus, onblur)
+    onfocus : 클릭해서 포커스가 갔을 때
+    onblur : 다른데를 클릭해서 포커스를 벗어날 때
+--onfocus.html
+
+
+
+
+
+----------------------------------
+이벤트 리스너란?
+
+DOM 요소에서 발생하는 이벤트를 감지하고
+해당 이벤트가 발생했을 때 자동으로 실행되는 함수.
+
+addEventListener() 메서드를 사용하여 이벤트를 리스너를 등록
+
+const element = documnet.getElementById('helo')
+element.addEventListener(event, callback, useCapture);
+
+event : 감지하고자 하는 이벤트의 종류( 예 : 'click', 'keydown', 'submit' 등)
+callback : 이벤트가 발생했을 때 호출될 함수
+useCapture : 이벤트 캡쳐링 여부 (true이면 캡쳐링, false이면 버블링, 안쓰면 기본값은 false)
+
+이벤트 캡쳐링이란? 
+이벤트가 전파되는 방식을 지정.
+여러개의 이벤트가 지정되었을 때 전파 방식을 지정한다.
+
+캡쳐링 : 이벤트가 최상위 부모 요소부터 자식 요소로 전파.
+버블링 : 자식요소에서 부모요소로 전파되는
+
+-- 자식 부모 html 태그가 다 addEventListener로 설정되어있을 때 자식을 클릭하면 부모도 같이 실행되니깐 어떤거 먼저 실행할지 정하는거다. 
+
+1. 클릭이벤트
+-- useCapture.html
+
+2. 마우스오버/마우스아웃 이벤트(mouseover, mosuseout)
+-- addMouseEvent.html
+
+3. 키 입력 이벤트(keydown, keyup)
+-- addKeyEvent.html
+
+4. 폼 제출 이벤트(submit)
+-- addSubmitEvent.html

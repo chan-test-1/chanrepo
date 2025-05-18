@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeydown="keydown()" placeholder="여기 입력해 보세요"/>
+    <input type="text" onkeyup="keyup()" placeholder="여기 입력해 보세요"/>
+    <input type="text" onkeypress="keypress()" placeholder="여기 입력해 보세요"/>
+
+    <script>
+        function keydown(){  // 키를 눌렀을 때
+            console.log("keyDown!!!")
+        }
+
+        function keypress(){ // 키를 누르고있을 때
+            console.log("keyPress!!!")
+        }
+
+        function keyup(){ // 키를 눌렀다 땠을 때
+            console.log("keyUp!!!")
+        }
+
+        // 꾹 누르고있으면 keydown 이랑 keyPress가 계속 찍힌다.
+        // keyDown은 눌렀을 떄 1회만 실행해야되는데 누르고있으면 계속 실행되는 버그가 있다.
+        // 그러므로 keydown , keypress 둘중 하나만 쓰면된다.
+        
+    </script>
+</body>
+</html>

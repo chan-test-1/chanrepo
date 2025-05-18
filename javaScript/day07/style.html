@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="styleExample" style="width: 100px; height: 100px; background-color: lightskyblue;">기본 스타일</div>
+    <button onclick="changeStyle()">스타일 변경</button>
+    
+    <script>
+        function changeStyle(){
+            const element = document.getElementById('styleExample');
+            element.style.backgroundColor='lightgreen'
+            element.style.width='200px'
+            element.style.height='200px'
+            element.innerText='변경 된 스타일'
+        }
+        
+
+        // 퀴즈. 기본 스타일 <-> 변경된 스타일로 스위칭 되도록 기능 변경.
+        // head 에 style선언.
+        // className줘서 if문으로 컨트롤.
+        
+
+    </script>
+</body>
+</html>

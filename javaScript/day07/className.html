@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+        .default{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="classExample" class="default">이것은 기본 클래스입니다.</div>
+    <button onclick="toggleClass()">클래스 토글</button>
+    <script>
+        const toggleClass = () => { //화살표함수로 써봤다 그냥.
+            const element = document.getElementById('classExample')
+            element.className = 'highlight';
+
+            /* if(element.className === 'default'){
+                element.className = 'highlight';
+                element.innerText = '이것은 하이라이트 클래스입니다.'
+            } else {
+                element.className = 'default';
+                element.innerText = '이것은 기본 클래스입니다.'
+            } */
+            
+            /* element.className = element.className === 'default' ? 'highlight' : 'default' */
+
+            
+        }
+        
+
+    </script>
+</body>
+</html>

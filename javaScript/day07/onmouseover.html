@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이벤트핸들러 안에서 this. 자기자신을 가리킴. --> 
+    <div onmouseover="this.style.backgroundColor='yellow'" 
+        onmouseout="this.style.backgroundColor='white'"
+        style="width:200px; height:200px; border: 1px solid black;" >마우스를 올려보세요.</div>
+
+    <!-- this를 함수파라미터로 넘겨서 사용할 수 있다. 함수 한번 만들어보자.-->
+
+    <!-- 
+        이건 그냥 내가 쓴건데, this보다는 event많이쓴다. event.target.style.backgroundColor 
+        
+        this는 화살표함수에서는 자기자신말고 외부 window 를 가르키므로 function (전통함수)에서만.
+
+
+        <button id='btn'><span>클릭하세요</span></button>
+        document.getElementById('btn').addEventListner('click', function(event){
+            this.style.backgroundColor = 'yellow' -- // 버튼 바라봄.
+            event.target.backgroundColor = 'red' -- // span클릭 시 span 배경만 변경.
+        })    
+    
+        this 보다 event가 클릭한요소를 가져오고. 직관적임. 
+        일단 최신은 다 화살표함수 쓰는데 this는 화살표함수에서 못씀.
+    -->
+
+</body>
+</html>
