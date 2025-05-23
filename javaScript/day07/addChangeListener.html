@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="mySelect">
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+        <option value="cherry">체리</option>
+    </select>
+    <script>
+
+        const select = document.getElementById("mySelect")
+
+        select.addEventListener('change', function(event){
+            // event 를 이용해서 갖고오는법  (난 이걸 젤 많이 쓰는것같은데..)
+            console.log('event.target.selectedIndex', event.target.selectedIndex)
+            console.log('event.target.value', event.target.value)
+
+            // this 를 이용해서 갖고오는법
+            console.log('this', this.value)
+            console.log('this', this.selectedIndex)
+
+            // select를 이용해서 갖고오는법.
+            console.log('select.selectedIndex',select.selectedIndex)
+            console.log('select.value',select.value)
+        })
+
+    </script>
+</body>
+</html>

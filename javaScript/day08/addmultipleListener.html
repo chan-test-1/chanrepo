@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButton">클릭하세요</button>
+    <button id="delButton">이벤트 리스너 삭제</button>
+    <script>
+        const myButton = document.getElementById('myButton');
+        const delButton = document.getElementById('delButton');
+
+        function handleClick() {
+            alert('클릭되었습니다.');
+        }
+
+        function displayConsole() {
+            console.log('클릭되었습니다!');
+        }
+
+        /* myButton에 2개를 같이 넣을 수 있다.  */
+        myButton.addEventListener('click', handleClick)
+        myButton.addEventListener('click', displayConsole)
+
+        // 위에 2개뜨는지 확인하고 밑에 주석풀어서 delbutton 버튼 클릭해서 handleClick 이벤트 제거되어서 alert 안뜨는지 확인.
+
+        /* delButton.addEventListener('click', function(){
+            myButton.removeEventListener('click', handleClick) // 삭제할 이벤트함수를 2번째 인자에 넣는다.
+        }) */
+
+
+    </script>
+</body>
+</html>
