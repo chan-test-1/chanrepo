@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 색상 예제</title>
+    <style>
+        #colorBox {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            border: 1px solid rgb(85, 52, 52);
+        }
+    </style>
+</head>
+<body>
+    <h1>랜덤 색상 생성기</h1>
+    <button onclick="generateRandomColor()">랜덤 색상 생성</button>
+    <div id="colorBox"></div>
+
+    <script> 
+        function generateRandomColor(){
+            const r = Math.floor(Math.random() * 256);  // 0~1 사이의 난수. 최대 0.999999999 * 256   = 255.99999999 나오면 내리니깐 최대 255까지 나온다. RGB칼라는 256까지.
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            console.log(r,g,b);
+            const randomeColor = `rgb(${r},${g},${b})`;
+
+            document.getElementById('colorBox').style.backgroundColor = randomeColor;
+        }
+    </script>
+</body>
+</html>
