@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그림자 길이 계산기</title>
+    <style>
+        #colorBox {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            border: 1px solid rgb(85, 52, 52);
+        }
+    </style>
+</head>
+<body>
+    <h1>그림자 길이 계산기</h1>
+    <p>태양의 고도 각도(º)와 물체의 높이를 입력하여 그림자 길이를 계산합니다.</p>
+    
+    <label for="angle">태양의 고도 각도(º): </label>
+    <input type="number" id="angle" placeholder="예: 45"/>
+
+    <label for="height">물체의 높이(미터): </label>
+    <input type="number" id="height" placeholder="예: 2"/>
+
+    <button onclick="calculateShadow()">그림자 길이 계산</button>
+
+    <h2>결과</h2>
+    <p id="result">그림자의 길이가 여기에 표시됩니다.</p>
+
+    <script> 
+    /* 다작성하고 나서 쓴 글. 핵심은 parseFloat, NaN 만 이해하고 넘어가자.  */
+        function calculateShadow(){
+            const angle = parseFloat(document.getElementById('angle').value); // value로 받아오는건 무조건 String이다.  String에서 실수로 바꾸는건 parseFloat()
+            const height = parseFloat(document.getElementById('height').value);
+            
+            console.log(angle) // 아무것도 입력하지 않았을 때 NaN 이라고 뜬다. NaN(Not a Number)은 숫자(number)를 쓴다했는데 다른값이 들어왔을때.
+
+            if(isNaN(angle) || isNaN(height) || angle <= 0 || height <= 0 ){ // if문 조건도 순차적으로 탄다.
+                document.getElementById('result').innerText = "올바른 값을 입력하세요."
+            }
+
+            // 이건 수학공식이니 무시하자.
+            const angleInRadians = angle * (Math.PI / 180); 
+            const shadowLength = height / Math.tan(angleInRadians);  
+            
+            document.getElementById('result').innerText = `그림자의 길이 ${shadowLength.toFixed(2)} 미터`;
+        }
+    </script>
+</body>
+</html>

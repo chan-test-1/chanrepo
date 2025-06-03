@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>간단한 문자열 암호화 시스템</h1>
+    <!-- for 을 쓰면 inputText라는 id를 가진 태그와 연결하겠다. -->
+    <label for="inputText">암호화 할 문자열 입력: </label>
+    <input type="text" id="inputText" placeholder="문자열을 입력.">
+    <button onclick="encryptText()">암호화</button>
+    <button onclick="decryptText()">복호화</button>
+
+    <h2>결과</h2>
+    <p id="encryptedText">암호화된 텍스트: </p>
+    <p id="descryptedText">복호화된 텍스트: </p>
+
+    <script>
+        function encryptText(){
+            const inputText = document.getElementById('inputText').value;
+
+            let encryptedText = '';
+            
+            for(let i = 0; i < inputText.length ; i++){
+                encryptedText += String.fromCharCode(inputText.charCodeAt(i) + 5);   
+                // +5 하는 이유는  유니코드 65는 A,  65+5 = 70   string.formcharcode(70) 하면 'F'  그래서 HELO 를 쓰면 MJQT가 나온다. 
+                // 이것을 +5씩 더한 것으로 암호화한거고 복호화 할때는 그값을 -5 해서 풀어주는 느낌.
+            }
+            document.getElementById('encryptedText').innerText = `암호화된 텍스트: ${encryptedText}`
+            document.getElementById('descryptedText').innerText = `복호화된 텍스트: `;
+            
+        }
+
+        function decryptText(){
+            const encryptedText = document.getElementById('encryptedText').innerText.replace('암호화된 텍스트: ', '');
+
+            let descryptedText = '';
+
+            for(let i = 0; i < encryptedText.length; i++){
+                descryptedText += String.fromCharCode(encryptedText.charCodeAt(i) - 5);
+            }
+            document.getElementById('descryptedText').innerText = `복호화된 텍스트 : ${descryptedText}`
+            document.getElementById('encryptedText').innerText = `암호화된 텍스트: :`
+            
+            
+        }
+
+
+    </script>
+
+<!--     fromCharCode()
+    - 아스키 코드 값을 사용하여 문자를 생성하는 메서드
+    - String.fromCharCode(code1, cod2, ..., codeN); // 아스키코드는 컴퓨터가 문자를 숫자로 표현하기 위해 만든 표준. 파라미터는 10진수가 들어가며 65부터 A다.
+
+    let char1 = String.fromCharCode(65);
+    console.log(char1); // A
+
+    let char2 = String.fromCharCode(65, 66)
+    console.log(char2); // AB
+
+
+    charCodeAt()
+    - 문자의 아스키코드 값을 반환하는 메소드
+    - string.charCodeAt(index)
+
+    let str = 'Hello'
+
+    let code1 = str.charCodeAt(0); //0번째 H를 의미함.  결과: 72
+    let code2 = str.charCodeAt(1); //1번쨰 e를 의미함.  결과: 101
+ -->
+</body>
+</html>
+
+const
