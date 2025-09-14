@@ -304,10 +304,12 @@ getRandomInt(1, 5)
 
 --------------------
 
-자바스크립트 생성자 함수
+자바스크립트 생성자 함수 
+(리엑트같은게 있어서 클래스함수는 거의 안쓴다. 난 본적이없어. 그래도 기본만... 알아보자.)
 
 1. 클래스 기반 생성자
-- ES6에서 도입된 class 구문을 통해 생성자를 정의
+- ES6에서 도입된 class 구문을 통해 생성자를 정의 (이게 최신꺼고 밑에 생성자함수는 옜날부터있었다. 이게 가독성이 더 좋다.)
+- prototype 기반 객체지향 프로그래밍을 쉽게 사용.
 - 클래스 생성자는 constructor 라는 특별한 메서드를 사용하여 정의
 - new 없이 호출하면 에러가 발생
 - 일반적으로 클래스 기반 생성자가 더 직관적이고 안전하기 때문에, 가능하면 클래스를 사용하는 것이 좋음
@@ -332,3 +334,611 @@ jihoon.greet(); // 안녕하세요 저는 jihoon 입니다.
 const ketty = new person('케티', 22);  
 ketty.greet(); // 안녕하세요 저는 ketty 입니다.
 
+
+2. 생성자 함수 기반
+- new 키워드 없이 호출 할 수 있지만, 의도와 다르게 동작할 수 있음
+
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}
+
+
+;//생성자 내에 함수 선언법
+Person.prototype.greet = function(){
+    console.log(`안녕하세요, 저는 ${this.name}입니다.`)
+};
+
+const james = new Person('제임스', 30)
+console.log(james.name)
+console.log(james.age)
+james.greet();
+
+prototype 이란?
+- 함수 생성될 때 자동으로 생성되는 특수 객체
+- 새로 생성된 객체가 상속받을 메서드와 속성을 정의
+- 객체가 특정 속성이나 메서드를 찾을 때, 자기 자산의 속성에서 찾지 못하면 prototype체인을 따라 상위 객체를 검색 (Person함수가 자식이 될 때 )
+
+const ketty = Person('케티',24);
+console.log(ketty); //undefined . new 를 쓰지않으면 안된다.
+
+instanceof 이란
+- 객체가 특정 생성자 함수(또는 클래스)의 인스턴스인지 확인.
+- 객체의 prototype 체인을 따라 올라가며, 지정된 생성자 함수의 prototype과 일치하는지를 확인.
+
+function Person(name){
+    this.name = name;
+}
+
+function Dog(name) {
+    this.name = name;
+}
+
+const person1 = new Person('홍길동');
+
+console.log(person1 instanceof Person);  // person1 이 Person 에 속해있냐 ?   결과: true
+
+console.log(person1 instanceof Dog);  // person1 이 Dog 에 속해있냐 ?   결과: false
+
+console.log(person1 instanceof Object);  // person1 이 Object 에 속해있냐 ?   결과: true
+
+
+
+// new 없이 호출 방지
+function Person(name){
+    if(!(this instanceof Person)){ ;//new가있으면 this는 Person 자기자신을 가리키고 new가없으면 window 를 가리킴.
+        return new Person(name); // new없을 시 재호출.
+    }
+
+    this.name = name;
+}
+
+const jihoon = Person('이지훈');
+
+console.log(jihoon.name) ;// new가 없는것도 방지했으므로 이지훈이 잘 나온다.
+
+
+3. 스태틱 메서드
+- 클래스에서 생성자 외에 정의할 수 있는 메서드.
+- 클래스 자체에 할당되어, 특정 인스턴스가 아닌 클래스에서 직접 호출 됨
+
+class MathUtil
+{
+    static add(a,b)
+    {
+        return a+b;
+    }
+}
+
+이렇게 호출했어야됐는데.
+const a = new MathUtil();
+a.add(1,3); 
+
+static을 쓰면 이렇게 접근가능.
+MathUtil.add(3,5)
+
+console.log(MathUtil.add(3,5)) ;// 8
+
+
+
+
+-------------------------------
+
+
+try...catch 문 이란?
+- 오류가 발생할 수 있는 코드 블록을 실행하고, 오류가 발생했을 때 이를 처리하는 구조
+- 이 구문은 예외 처리 메커니즘을 제공하여 코드의 안정성을 높이는데 사용.
+
+try {
+    // 오류가 발생할 가능성이 있는 코드
+} catch(error) {
+    // 오류가 발생하면 실행되는 코드
+}
+
+try : 코드 블로갠에서 오류가 발생할수 있는 코드를 포함, 이 블록안에서 오류가 발생하면 제어가 catch 블록으로 이동.
+catch : try 블록 내에서 오류가 발생하면 실행되는 코드
+
+참조 오류
+try {
+    let x = y + 10;
+
+    console.log('정상코드 실행') ;// 위에서 에러났으므로 표시되지않음 
+} catch(error) {
+    console.log(error) ;// referenceError(참조오류)
+    console.log('오류발생 : ', error.message);  // y is not defined
+}
+
+
+타입 오류
+try {
+    let obj = null;
+    console.log(obj.name) ;
+} catch(error) {
+    console.log(error) ;// typeError(타입오류)
+    console.log('오류발생 : ', error.message);  // cannot read properties of null (reading 'name')    name을 읽을 수 없다.
+}
+
+
+구문 오류
+try {
+    console.log('hello'  ; // 괄호를 닫지 않았다.
+} catch(error) {
+    console.log(error) ;// syntaxError(타입오류)
+    console.log('오류발생 : ', error.message);  // Uncaught SyntaxError: missing ) after argument list 
+
+}
+
+
+명시적 오류 발생 ; // 일부러 발생시키는 . 만약 if(a)이면 에러를 발생시켜 catch문으로 이동하게끔.
+try {
+    
+    const a = true;
+    
+    if(a){
+        throw new Error("문제가 발생했습니다!!")  ;// 에러가 발생하면 던지겠다(throw)
+    }
+    
+    
+} catch(error) {
+    console.log(error) ;// Error
+    console.log('오류발생 : ', error.message);  // 문제가 발생했습니다!!!
+
+}
+
+
+finally 블록
+- 블록은 선택적으로 사용할 수 있으며, try...catch가 끝난 후 반드시 실행되는 코드
+- 오류 발생여부와 관계없이 실행
+- 주로 리소스를 정리하는데 사용
+
+try {
+    console.log("코드를 실행합니다.")
+
+    console.log("코드를 종료합니다.")
+} catch(error) {
+    console.log("에러가 발생했습니다..")
+} finally {
+    console.log('오류와 관계없이 항상 실행됩니다.')
+}
+
+
+다양한 에러 처리
+
+try {
+    let obj = null
+    console.log(obj.name); // 타입오류
+}catch(error){
+    if(error instanceof SyntaxError){
+        console.log('문법 오류 처리', error.message)
+    }else if(error instanceof SyntaxError){
+        console.log('타입 오류 처리', error.message)
+    }else {
+        console.log('기타 오류 처리')
+    }
+}
+
+
+JSON (JavaScript Obejct Notation) 이란? (자바스크립트 객체 표기법)
+
+- 자바스크립트의 객체 리터럴 표기법에서 영감을 받아 개발된 데이터 표현 및 교환 포멧
+- 데이터를 표현하고 교환하기 위해 사용되는 텍스트 기반 포멧
+- 사람이 읽기 쉽고 기계가 처리하기 쉬운 데이터 구조를 표현
+
+역사 
+- 1990년대 후반과 2000년대 초반, 데이터 교환 포멧으로는 XML(Extensible Markup Language) 가 널리 사용
+- XML의 단점으로 인한 대안이 필요
+-----------
+XML의 단점
+- 데이터 표현을 위해 많은 태그를 사용해야 하며, 읽고 쓰기가 번거로움
+- 데이터 크기가 크고 처리 속도가 느려짐
+- 사람이 읽기 어렵고 직관적이지 않음
+
+- 더글라스 크록포드(Douglas Crockford)는 자바스크립트의 객체 리터럴 표기법에서 영감을 받아 JSON 이라는 이름과 포맷을 공식적으로 제안
+- 여러기업(google,yahoo 등)들이 채택하며 국제표준으로 채택
+-----------
+JSON의 설계 철학
+- 사람도 쉽게 읽고 쓸수있는 데이터 포멧
+- 자바스크립트의 객체 문법과 유사하게 유지
+- 다른언어에서도 쉽게 사용
+- 객체, 배열, 문자열, 숫자, 불리언, null 을 사용해 데이터를 간결하게 표현식을
+
+JSON의 한계
+- JSON은 텍스트 기반이므로, 이진 데이터 전송에는 부적합.
+- JSON은 메서드나 심볼과 같은 동적 요소를 표함할 수 없음. (함수는 담지 못한다)
+- JSON 데이터의 형식이 잘못되면, 전체 데이터가 파싱되지 않는 문제가 발생.
+
+
+JSON의 자바스크립트 사용 메소드
+
+1. JOSN.parse()
+- JSON 문자열을 자바스크립트 객체로 변환
+- 서버에서 받은 JSON 데이터를 자바스크립트에서 처리
+
+;// jsonString은 서버에서 온데이터로 가정해보자.
+const jsonString = '{"name":"홍길동","age":30,"isStudent":false}'
+const obj = JSON.parse(jsonString);
+
+console.log(jsonString); {"name":"홍길동","age":30,"isStudent":false}
+console.log(obj); {name: '홍길동', age: 30, isStudent: false}
+
+jsonString은 문자열이고 obj는 객체다.
+
+obj.name 이렇게 접근할수가 있다. 
+
+2. JSON.stringify();
+- 자바스크립트 객체를 JSON 문자열로 변환
+- 데이터를 서버로 전송하거나 저장하기 위해 객체를 문자열로 반환
+- JSON.stringify(value, replacer, space)
+
+/ˈstrɪŋ.ɡəˌfaɪ/         발음기호..
+(스트링-거-파이) 
+
+const obj = {
+    name: "홍길동",
+    age: 30,
+    isStudent: false
+}
+
+const jsonString = JSON.stringify(obj)
+
+console.log(jsonString);
+
+const preetyJson = JSON.stringify(obj, null, 2);  파라미터에 null, 2 넣어주면 밑에처럼 보기좋게 엔터 및 들여쓰기도 해줌.
+console.log(preetyJson)
+{
+  "name": "홍길동",
+  "age": 30,
+  "isStudent", false
+}
+
+
+const filteredJson = JSON.stringify(obj, ["name", "age"]);  name 과 age만 뽑아와라. 
+console.log(filteredJson)
+{
+    name: "홍길동",
+    age: 30,
+}
+
+3. JSON의 배열 표현
+
+const jsonArray = '[{"id":1,"name":"홍길동"},{"id":2,"name":"이순신"}]'
+
+const users = JSON.parse(jsonArray);
+
+console.log(users)
+
+users.forEach(user => {
+    console.log(user.name)
+})
+
+- 자바스크립트 배열을 JSON 문자열로 변환
+
+const userArray = [
+    {id: 1, name: '홍길동'},
+    {id: 2, name: '이순신'}
+];
+
+const jsonString = json.stringify(userArray);
+console.log(jsonString)
+
+
+-- 요즘 API -- 
+fetch('/api/user')
+  .then(res => res.json()) // 여기서 자동으로 parse! 하므로 parse나 stringify를 잘 쓰지는 않는다.
+  .then(data => {
+    console.log(data.name);
+  });
+
+
+
+----------------------------------------
+HTTP 요청이란?
+
+- HTTP 요청은 클라이언트(예: 웹브라우저 또는 모바일 앱)가 서버로 특정한 작업을 요청하는 메세지.
+- HTTP(HyperText Transfer Protocol) [하이퍼텍스트를 주고받기위한 방법(프로토콜)]를 통해 이루어지며,
+    클라이언트와 서버 간 통신의 핵심.
+
+1. HTTP 요청의 구조
+
+1.1 요청 라인 (Request Line)
+- HTTP메서드 요청URL HTTP버전
+
+google -> 버프슈트 -> products -> community edition -> go straight download -> burp suite community eidition -> download
+
+proxy 탭 -> open browser -> www.naver.com
+
+보안에러 뜨면 '127.0.0.1;8080/cert' 입력하면 다운로드되고 우클릭해서 인증서 설치. 열기. 다음. 모든 인증서를 다음 저장소에 저장. 찾아보기. 신뢰할 수 있는 루트 인증기관. 확인. 다음. 마침.
+
+네이버에 접근하려면 버프슈트를 통해서 접근하려는데 신뢰할 수 있는 사이트인지 모르기때문에 신뢰할수있는 사이트를 적용하기위한 설치.
+
+
+난 설치안하고 그냥 봤다. 
+
+www.naver.com 을 날리면
+
+GET /products HTTP/2  이런식으로 나옴.
+
+
+http메서드 : 요청의 성격을 정의 (GET,  POST 등)
+요청URL: 요청 대상의 리소스 경로
+HTTP 버전 : 사용중인 HTTP 프로토콜 버전 (예: HTTP/1.1 HTTP/2)
+
+
+1.2 헤더 (Headers)
+- 요청의 추가 정보나 메타데이터를 전달
+- 각 헤더는 이름: 값 형식으로 작성.
+
+HOST : www.naver.com 
+User-Agent: Mozilla/5.0
+Accept-Language: ko-Kr,ko;q=0.9
+
+헤더에는 정보를 담고있다.
+
+ 1.3 본문 (Body) (선택사항)
+ - 요청에 추가 데이터를 포함 (주로 POST, PUT 요청에서 사용)
+ - 예시 : JSON, XML, 폼 데이터 등이 포함될 수 있음.
+
+{
+    "username" : "example",
+    "password" : "1234"
+}
+
+2 HTTP 요청 메서드
+- HTTP 요청은 메서드를 통해 요청의 성격을 정의
+
+2.1 GET
+- 서버에서 데이터를 조회
+- 요청 본문이 없음 (body 없음.)
+- 캐싱 가능하며, 데이터 요청에 적합. ; 한번 요청한 건은 캐싱하여 들고있음. 
+
+캐싱 여부
+- 서버가 주로 캐싱 여부를 결정하며, 캐싱 관련 HTTP 헤더를 설정.
+- 클라이언트와 중간 캐시 시스템은 서버의 정책을 따르지만, 특정 조건에 따라 정책을 무시하거나 수정; 로고같은건 바뀌지않고 고정이니깐 계속 불러오지않고 받아서 들고있는다고한다 브라우저가.
+
+GET /products HTTP/1.1
+
+2.2 POST
+- 서버에 데이터를 전송하거나 새로운 리소스를 생성
+- 본문에 데이터를 포함
+
+POST /login HTTP/1.1
+HOST : example.com
+Content-Type : application/json   ; 데이터형식
+BODY: {
+    "username" : "user",
+    "password" : "pass"
+}
+
+
+--------- 이 밑으로는 잘 안쓴다 써도 POST랑 방식이 동일함.     조회는 GET 삽입,수정,삭제 다 POST 쓰는 추세.-------------------------
+
+2.3 PUT ; POST와 형식 같음.
+- 서버에 리소스를 업데이트하거나 새로운 리소스를 생성
+- 요청 본문에 데이터를 포함하며, 리소스를 대체
+
+2.4 DELETE
+- 서버에서 리소스를 삭제
+
+2.5 HEAD
+- GET 요청과 동일하지만, 본문 없이 헤더만 반환
+- 리소스의 존재 여부나 메타데이터 확인에 사용
+
+2.6 OPTIONS
+- 서버에서 지원하는 HTTP 메서드 목록 요청
+
+2.7 PATCH
+- 서버에서 리소스를 부분적으로 업데이트.
+
+
+
+
+3. HTTP 요청 헤더
+- 요청 헤더는 요청에 대한 추가 정보를 제공
+
+3.1 일반 헤더 ; 내가 보내지 않아도 기본적으로 같이 보내지는 정보들. 
+
+Host: 요청 대상 서버의 도메인
+;ex) Host: example.com
+
+User-Agent: 클라이언트 정보를 포함 ;  
+;ex) User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)  --> Mozilla는 크롬만든회사, Explorer면은 IE라고 찍힌다.
+
+
+Accept: 클라이언트가 지원하는 응답 데이터 형식
+;ex) Accept: text/html, application/json
+
+Content-Type: 요청 본문의 데이터 형식
+;ex) Content-Type: application/json
+
+Content-Length: 요청 본문의 길이
+;ex) Content-Length: 348
+
+Authorization: 인증 토큰이나 자격 증명 ; 네이버페이지에서 로그인한 사용자만 이용할 수 있는 기능. 요청할때마다 id/pw를 보낼순없으니 그걸 담는게 토큰정보. 
+;ex) Authorization: Bearer eyJhbGci0iJIUzI1NiIsInR5cCI6xpXVCJ9...
+
+Cache-Control: 캐싱 정책 ; 캐싱정책을 수정해서 어떤걸 캐싱해놓을지.
+;ex) Cache-Control: no cache
+
+
+4. HTTP 상태 코드 
+- 요청에 대한 서버의 응답은 HTTP 상태 코드로 표시
+- 요청(Request) , 응답(Response)
+- 응답 코드로 200 OK 이런식으로 상태코드가 넘어온다.  1xx, 2xx, 3xx, 4xx, 5xx  로 나뉜다.
+
+1XX (정보): 요청이 수신됨. ; 어 나이거 보낼거야. 준비됐어?     응 준비됐어 1xx
+2XX (성공): 요청이 성공적으로 처리됨. 
+- 200 OK : 성공
+- 201 Created : 리소스 생성됨
+
+3XX (리다이렉션): 요청이 다른 URL로 리다이렉션됨. ; 리다이렉션(방향을바꾸다) = 웹에서 사용자를 다른 주소로 자동이동 시키는 것.
+; 예를들어 www.naver.com 으로 이동했다. 그런데 사이트가 새주소로 옮겨져서 서버가 자동으로 newsite.com 으로 가세요! 하면서 이동. 
+; 사이트 주소가 바뀐 경우, 로그인 후 마이페이지로 이동, POST 요청 처리 후 결과 페이지로 이동 등..
+
+4XX (클라이언트 오류): 요청에 문제가 있음.
+- 400 Bad Request: 잘못된 요청.
+- 404 Not Found: 리소스를 찾을 수 없음. ; 너가 보낸거 찾을 수 없어.
+
+5xx (서버 오류) : 서버에서 요청 처리중 문제 발생.
+- 500 Internal Server Error : 서버 오류
+
+
+
+
+-- API 요청 실습 (Application Programming Interface) ; 소프트웨어 구성 요소들이 서로 상호작용할 수 있도록 정의된 규칙과 프로토콜의 집합.
+공공데이터 포털 구글에 검색. 들어가서 데이터찾기 메뉴 누르고 한국교통안전공단_전국공용주차장정보 
+젤 위에 뜬 한국교통안전공단_전국공용주차장정보 클릭 , 오른쪽 버튼 활용신청 누르면
+
+로그인해야된다.
+
+그리고 postman 설치. 
+포스트맨에서 my workaspace 옆에 new 눌러서 http로 선택해주고 
+GET URL에 공공데이터 제공하는 baseUrl : https://api.odcloud.kr/api    /여기
+그리고 밑으로내리면 swagger 있는데 스웨거 주소 위 baseUrl 뒤에 붙여넣자.
+
+그리고 포스트맨 Query params 부분 
+key 
+스웨거에 나와있는 page, perPage, cond[지역코드::EQ] 
+value 
+스웨거에 나와있는    1,      10,             11680   ;강남지역코드  도로명주소안내시스템에서 시군구번호가 들어가는듯. 강북구로도 바꿔보자.
+
+
+- 인증키도 넣어야 실행되게끔 되어있음.
+스웨거 Headres 탭들어가서
+key  
+Authorization
+value 
+공공데이터에 나와있는 일반인증키(Decoding) 가져와서 넣는데 제일 앞에 Infuser를 넣어줘야된다. (이건 공공데이터가 정해놓은듯.)
+ex ) Infuser n6GbRztziifx2f....
+
+send 버튼 눌러서 실행하면 데이터 나온다.
+
+
+-------------------------------------
+이제 API를 호출해서 데이터를 뿌리는 걸 배울텐데 그걸 위해 
+AJAX를 배워보자.
+
+---------AJAX (Asynchronous JavaScript And Xml)  ; 비동기 자바스크립트 , XML 통신
+
+- 웹 어플리케이션 전체 페이지를 새로고침하지 않고도 데이터를 비동기적으로 서버와 주고받을 수 있도록 하는 기술.
+- AJAX라는 이름은 XML이 포함되어 있지만, 현재는 JSON, HTML, 일반 텍스트 등의 데이터 형식으로 대체되어 사용
+- 현재는 fetch API 나 Axios 같은 라이브러리로 대체되면서 더 간단하고 강력한 방식으로 발전.
+
+AJAX의 작동 방식
+- 클라이언트에서 특정 이벤트 발생
+- XMLHttpRequest 객체가 서버로 비동기 요청 전송
+- 서버가 요청을 처리하고 데이터를 응답
+- 클라이언트가 응답 데이터를 받아 화면 일부를 업데이트
+
+장점
+- 페이지 전체 새로고침 없이 데이터 교환
+- 사용자의 경험(UX) 개선; 퍼블 UI,UX
+- 네트워크 효율성 향상(필요한 데이터만 요청)
+- 비동기 통신으로 빠른 반응성 제공 ;  비동기는 데이터요청을하면 페이지가 기다리는게아니라 요청해놓고 응답오기전에 다른일을 하는것.
+
+단점
+- JavaScript가 비활성화된 환경에서 동작하지 않음.
+- 서버와 클라이언트간 복잡한 통신 구현 필요 ; 이건 fetch API, Axios가 나와서 해결됨.
+- 보안 취약점에 주의 필요(예: XSS, CSRF) ; 이건 설명안해주냐 강사야.
+
+----------사용방법-------------
+XMLHttpsRequest 객체
+- 브라우저에서 서버로 HTTP요청을 보내고, 서버로부터 응답을 받아 처리할 수 있게 해주는 객체.
+
+open(method, url, async, user, password)    ;method : GET, POST   async(동기,비동기)
+- open을 통해 HTTP요청을 초기화.
+
+- method: HTTP 요청 메소드 (GET, POST, PUT, DELETE ... )
+- url : 요청을 보낼 URL (상대 경로나 절대 경로가 모두 가능) ; https://www.naver.com , 상대경로로 현재경로 / 를 써도됨.  
+; 여기까진 필수.
+- aysnc(선택) : 비동기 요청 여부 (true가 기본값, 동기 요청을 사용하려면 false) ; 동기요청은 요청 후 요청을 기다리겠다(브라우저 로딩 또는 멈춤), 비동기는 요청해놓고 딴일한다
+- user(선택) : HTTP 인증용 사용자 이름  ;  이건 API 보낼 때 인증용 아이디가 필요한 경우가 있다고한다. 예시를 안들어줌.. 써본적없음.
+- password(선택) : HTTP 인증용 사용자 패스워드 
+
+
+ex)
+let xhr = new HTMLHttpRequest();
+
+xhr.open('GET', 'https://example.com/api/data', true);  open은 정의 및 준비단계.
+
+send(data); 실제 보내는 문법 send.
+- 서버로 요청을 전송
+- data는 요청에 포함될 데이터로, POST나 PUT요청에서 사용.
+
+ex)
+xhr.send(); // GET 요청
+xhr.send(JSON.stringify({key: 'value'})) ; POST요청 문자열로 변환해야된다. 
+
+setRequestHeader(header, value) ; 공공데이터 인증키 보낸것처럼. 
+- 요청 헤더를 설정
+- header : 헤더의 이름 (예: Content-Type, Authorization 등)
+- value : 헤더의 값
+
+
+ex) xhr.setRequestHeader('Content-Type', 'application/json');
+
+
+- 주요 이벤트 핸들러 
+
+onload
+- 요청이 성공적으로 완료되었을 떄 호출
+
+xhr.onload = function () {
+    if(xhr.status === 200){
+        console.log(xhr.responseText);
+    }
+}
+
+
+onerror
+- 요청이 실패했을 때 호출
+
+xhr.onerror = function() {
+    console.log('요청 중 오류 발생')
+}
+
+
+onprogress
+- 요청 진행 상황을 추적할 떄 호출 ; 파일 다운로드같은 요청을 했을 때 .
+
+xhr.onprogress = function(event) {
+    if(event.lengthComputable){ ; 데이터를 받는 상황이라면.
+        console.log(`Recived ${event.loaded} of ${event.total} bytes`); loaded (얼만큼 되었는지), bytes (얼만큼 다운되었는지)
+    }
+}
+
+onreadystatechange; onload 에서 받아서 사용하거나. 여기서 요청이 완료되었을 때 처리하든가 2가지 방식이있다고함. onload쓰고말지. 요즘은 그냥 .than 쓰면되는데
+ - 요청 상태가 변경될 때 호출
+ - 상태는 xhr.readyState로 확인 가능하며, 0에서 4까지 변화
+ 0: 초기화되지 않음 (open() 호출 전)
+ 1: 서버와 연결됨 (open() 호출 후)
+ 2: 요청이 수신됨 (send() 호출 후)
+ 3: 요청 처리 중
+ 4: 요청 완료 
+
+
+ xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4 && xhr.status === 200){
+        console.log(xhr.responseText); 서버에서 반환된 응답 데이터 (문자열)
+    }
+ }
+
+제공하는 문법들
+
+xhr.statusText
+- http 상태 코드를 텍스트로 반환합니다. (OK, Not Found 등)
+
+xhr.responseText
+- 서버에서 반환된 응답 데이터를 문자열로 반환
+
+xhr.response
+- 서버에서 반환된 응답 데이터를 원래의 데이터 유형으로 반환 ; 요청형식이 application/json 형태면 json 반환해줌. 다른형식이면 다른걸로. 
+
+xhr.responseType
+- 응답 데이터를 반환할 데이터 유형을 설정
+- 가능 값 : "" (기본값, 문자열), "json", "blob",  "document", "arraybuffer"
+
+xhr.timeout
+- 요청 타임아웃 시간(밀리초)을 설정  ; 30초로 설정하면 요청 30초 지나면 에러 반환.     무한 요청 상태를 방지하기 위해.
+
+xhr.withCredentials  ; 잘안쓴댄다 이런게 있다는정도만.
+- 요청에 자격 증명(쿠키, 인증 정보 등)을 포함할지 여부를 지정

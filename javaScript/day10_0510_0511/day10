@@ -1,0 +1,142 @@
+; 북스토어 만든다고하는데 (프론트, 백엔드, DB 써서)
+; 여기서부터는 지내끼리 카톡보내고 폴더 받아서 쓰네..
+; 그냥 보고듣고 적는다.
+; 프론트앤드는 타입스크립트 쓰는것같고 
+; 아니 진도가 왜 갑자기 타입스크립트로 나갔지..? 다만들어진것같다가 하넹;;
+
+서버 액션
+
+클라이언트에서 발생한 이벤트(버튼 클릭, 폼제출 등)를 서버에서 직접 처리
+전통적인 API 라우트나 fetch 호출 없이, 컴포넌트 내부에서 서버 함수를 정의하고 바로 호출
+
+----------- 일단 북리뷰페이지 -----------
+; 내용, 작성자를 작성하고 작성하기 버튼 누르면 내용,작성자,북아이디가 서버로 전송되는 과정을 보여주는 코드.
+
+function Page({bookId} : {bookId : string}) {
+    async function createReviewAction(formData: FormData){ 
+        "use server";
+        console.log("server action called");
+
+        const bookId = formData.get("bookId")?.toString();
+        const content = formData.get("content")?.toString();
+        const author = formData.get("author")?.toString();
+
+        console.log(content, author);
+
+        if(!bookId || !content || !author){
+            return;
+        }
+
+        try{
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review`, {
+                    method: "POST",
+                    body: JSON.stringify({  ; -> 객체를 json 형태로 변환해서 body에 담는다.
+                        bookId :  bookId, ; -> 키와 벨류가 같으면 bookId 하나만 써도된다.
+                        content : content,
+                        author : author
+                    })
+                }
+            )
+            
+            console.log(response.status);
+
+        }catch(err){
+            console.log(err);
+            return
+        }
+    }
+    
+    async function ReviewList({ bookId} : {bookId : string}){
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`
+        );
+
+        if(!response.ok){
+            throw new Error(`Review fetch failed : ${response.statusText}`) ;; 200 ok 같은 텍스트
+        }
+
+        const reviews : ReviewData[]= await response.json();
+
+        function ReviewItem({id, content, author, createdAt, bookId} : ReviewData){
+            return (
+                <div>
+                    <div>{author}</div>
+                    <div>{content}</div>
+                    <div>
+                        <div>{new Date(createdAt).toLocaleString()}</div>
+                        <div>삭제하기</div>
+                    </div>
+                </div>
+            )
+        }
+
+        return (<section>{reviews.map((review) => (
+            <ReviewItem key={`review-item-${review.id}`} {...reivew} />
+        ))}</section>)
+    }
+
+
+    async function ReviewEditor({ bookId} : {bookId : string}){
+        return(
+            <section>
+                <form 
+                    className={style.form_container} 
+                    action={createReviewAction}
+                >
+                    <input name="bookId" value={bookId} hidden readonly /> ; 사용자가 보이진 않아야돼서 hidden 숨겼는데 변경하게하면 어떡하냐라는 에러가나므로 readonly
+                    <textarea required name="content" placeholder="리뷰 내용" /> ; required 는 form 제출 시 필수값. 안쓰면 익스플로러에서 자동 에러.
+                    <div className={style.submit_contatiner}>
+                        <input required name="author" placeholder="작성자" />
+                        <butotn type="submit"> 작성하기 </button>
+                    </div>
+                </form>
+            </section>
+        )
+    }
+
+    
+}
+
+
+export default async function Page({
+    params
+} : {params: Promise<{ id : string}>}) {
+    return (
+        <div className={style.container}>
+            <BookDetail bookId={(await params).id} />
+            <ReviewEditor bookId={(await params).id} />
+            <ReviewList bookId={(await params).id} />
+        </div>
+    )
+} 
+
+
+; createReviewAction 함수는 export 붙여서 파일로 따로 관리해야된다.
+
+
+
+; ------- 작성을 하면 바로 재조회하는 법 -------
+; // revalidatePath 특정 주소에 해당하는 페이지를 재검증, 재조회. next.js 기능
+
+; // 특정 주소에 해당하는 페이지를 재검증
+; revalidatePath(`/book/${bookId}`) ; 
+; 이러면 이페이지에있는 백엔드 호출 다시 다 하는게 단점.
+
+; // 특정 경로의 모든 동적 페이지를 재검증
+; revalidatePath(`/book/[id]`)  이건 모든페이지 재검증.
+
+; // 특정 레이아웃을 갖는 모든 페이지 재검증 (with-searchbar 폴더 아래에있는..)
+; revalidatePath(`/(with-searchbar)`, 'layout')
+
+; // 모든 데이터 재검증
+; revalidatePath('/', 'layout');
+
+; // 태그 기준, 데이터 캐시 재검증
+; revalidateTag(`review-${bookId}`);  
+
+const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/book/${bookId}`.
+    { next : {tags: [`review-${boodId}`]}} ; 이부분처럼 tags 를 부여해놔야 revalidateTag를 쓸 수 있다.
+)
+
