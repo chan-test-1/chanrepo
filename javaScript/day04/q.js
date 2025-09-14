@@ -15,10 +15,17 @@ output
 "010-****-0000"
 "010-****-1234"
 
-*/ 
+*/
 
+const char = "010-1234-1234";
+const number = char.split("-");
 
+console.log("여기가 넘버를 찍는 부분이야==============>", number);
 
+number.splice(1, 1, "****");
+console.log("**** ==============>", number);
+
+//.splice;
 // 글자 -> replace
 // 배열 -> splice, split, join
 
@@ -31,13 +38,18 @@ output
 
 // console.log('aa',arr.join('-')) // 010-0000-0000
 
-
 // 1~3줄 짜리 문제
 
-function parseNumber (phoneNumber) {
-    const numberArr = phoneNumber.split('-')
-    numberArr[1] = '****'
-    return numberArr.join('-')
+function parseNumber(phoneNumber) {
+  const numberArr = phoneNumber.split("-");
+  numberArr[1] = "****";
+  return numberArr.join("-");
 }
 
-console.log(parseNumber("010-1234-1234"))
+for (i = 0; i < number.length; i++) {
+  parseNumber(number[i]);
+}
+console.log(parseNumber("010-1234-1234"));
+console.log(parseNumber("010-1234-7777"));
+
+number = ["010", "010", "010", "010", "010", "01"];
