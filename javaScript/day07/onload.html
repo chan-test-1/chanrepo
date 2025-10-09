@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        console.log('documnet.getElementById("loadExample")',document.getElementById("loadExample"))     // 이렇게하면 로드되기전에 불러오는것이기때문에 null.
-       
-        window.onload = function() { //페이지가 로드 된 후.
-            console.log('documnet.getElementById("loadExample")',document.getElementById("loadExample"))   
-        }
+      console.log(
+        'documnet.getElementById("loadExample")',
+        document.getElementById("loadExample")
+      ); // 이렇게하면 로드되기전에 불러오는것이기때문에 null.
+
+      window.onload = function () {
+        //페이지가 로드 된 후.
+        console.log(
+          'documnet.getElementById("loadExample")',
+          document.getElementById("loadExample")
+        );
+      };
     </script>
-</head>
-<body>
-    <h1 id="loadExample">페이지 로드 완료</h1>
-</body>
+  </head>
+  <body>
+    <h1 id="loadExample" onclick="abc()">로드 완료</h1>
+  </body>
 </html>
+페이지

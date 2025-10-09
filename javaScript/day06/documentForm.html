@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>documentForm</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- form 태그는 전송에 필요한 자료를 담는곳. -->
     <!-- 전송에 필요한 이름은 name 에 쓴다. -->
     <form name="myForm">
-        <input type="text" name="username">
-        <button type="submit">제출</button>
+      <input type="text" name="username" />
+      <input type="text" name="chan" />
+      <button type="submit">제출</button>
     </form>
-    
-    <script>
-        /* form 에 name 을 줌으로써 myForm 으로 접근할 수 있다. */
-        console.log('document.forms',document.forms)
 
-        let form = document.forms["myForm"];
-        /* 초기값 설정. */
-        form.username.value = "Guest"
+    <script>
+      /* form 에 name 을 줌으로써 myForm 으로 접근할 수 있다. */
+      console.log("document.forms", document.forms);
+
+      let form = document.forms["myForm"];
+      /* 초기값 설정. */
+      form.username.value = "Guest";
+      form.chan.value = "이찬이";
     </script>
-</body>
+  </body>
 </html>

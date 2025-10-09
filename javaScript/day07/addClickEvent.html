@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <button id="myButton">클릭하세요</button>
     <script>
-        function clickFunc(){
-            alert('버튼이 클릭되었습니다.')
-        }
-        const button = document.getElementById('myButton');
-        button.addEventListener('click', clickFunc);
-        //button.addEventListener('click', function(){alert('버튼이 클릭되었습니다.')}); // 익명함수
+      function clickFunc() {
+        alert("버튼이 클릭되었습니다.");
+      }
+      const button = document.getElementById("myButton");
 
+      button.addEventListener("click", clickFunc);
+      //button.addEventListener('click', function(){alert('버튼이 클릭되었습니다.')}); // 익명함수
     </script>
-</body>
+
+    <button onclick="clickFunc()"></button>
+  </body>
 </html>

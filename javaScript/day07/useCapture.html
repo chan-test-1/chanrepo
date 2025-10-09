@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div id="parent" style="padding: 20px; background:lightblue">
-        부모요소
-        <button id="child" style="margin-top: 10px;">자식버튼</button>
+  </head>
+  <body>
+    <div id="parent" style="padding: 20px; background: lightblue">
+      부모요소
+      <button id="child" style="margin-top: 10px">자식버튼</button>
     </div>
     <script>
-        document.getElementById('parent').addEventListener('click', function() {
-            alert('부모요소');
-            event.stopPropagation(); // 이벤트가 전파되는것을 막음
-        }, true)
+      document.getElementById("parent").addEventListener(
+        "click",
+        function () {
+          alert("부모요소");
+          event.stopPropagation(); // 이벤트가 전파되는것을 막음
+        },
+        true
+      );
 
-        document.getElementById('child').addEventListener('click', function() {
-            alert('자식요소')
-        })
+      document.getElementById("child").addEventListener("click", function () {
+        alert("자식요소");
+      });
     </script>
     <!-- div와 button은 다 부모에 포함되므로 이벤트가 동시에 일어난다. 마지막 useCapture 라는 파라미터를 안쓰면 기본값은 false이고(버블링) true로(캡쳐링) 하면 부모부터호출이다.
         부모에 걸어야된다. 부모를 호출 후 자식을 호출하지않으려면 event.stopPropagation() 이라는 걸 이용해서 이벤트 전파를 멈출 수 있다.
         반대로 자식호출 후 event.stopPropagation()를 쓰면 부모를 호출하지 않는다.
     -->
-</body>
+  </body>
 </html>

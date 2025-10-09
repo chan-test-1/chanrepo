@@ -41,7 +41,7 @@ console.log("**** ==============>", number);
 // 1~3줄 짜리 문제
 
 function parseNumber(phoneNumber) {
-  const numberArr = phoneNumber.split("-");
+  const numberArr = phoneNumber.split(-"");
   numberArr[1] = "****";
   return numberArr.join("-");
 }
