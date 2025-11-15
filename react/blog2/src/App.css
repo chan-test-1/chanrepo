@@ -1,0 +1,186 @@
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #333;
+}
+
+/* ---------------- Header ---------------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.header h1 a {
+  text-decoration: none;
+  color: #0077cc;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* 메뉴 영역 */
+.menu {
+  display: flex;
+  gap: 12px;
+}
+
+.menu .link {
+  text-decoration: none;
+  color: #555;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.menu .link:hover {
+  background-color: #0077cc;
+  color: white;
+  border-color: #0077cc;
+}
+
+/* ---------------- Day List ---------------- */
+.list_day {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  display: flex;        /* 가로 정렬 */
+  gap: 10px;            /* 박스 사이 간격 */
+}
+
+.list_day li {
+  padding: 12px 15px;
+  background: #f7f9fc;
+  border-radius: 8px;
+  border: 1px solid #e5e9f2;
+  font-size: 18px;
+  transition: 0.2s;
+  min-width: 60px;       /* 너무 작아지지 않도록 */
+  text-align: center;    /* 텍스트 가운데 정렬 */
+}
+
+.list_day li:hover {
+  background: #e9f3ff;
+  cursor: pointer;
+}
+
+.list_day li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ---------------- Word Table ---------------- */
+table {
+  width: 100%;
+  border-collapse: separate; /* collapse 대신 separate */
+  border-spacing: 0;         /* 여백 없앰 */
+  border: 2px solid #999;    /* 외곽선 진하게 */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+table th, table td {
+  border-bottom: 1px solid #ccc; /* 행 구분선 */
+  padding: 14px;
+  font-size: 18px;
+}
+
+table tr:last-child td {
+  border-bottom: none;  /* 마지막 줄 아래선 제거 */
+}
+
+table button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* 삭제 버튼 */
+table .btn_show {
+  background-color: #0077cc;
+  color: white;
+}
+
+table .btn_del {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+/* 체크 시 off */
+
+.off {
+  background-color: #999;
+}
+
+/* ------------ 여기까지  --------------------- */
+div {
+  box-sizing: border-box;
+}
+
+.list {
+  padding-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid grey;
+}
+
+.black-nav{
+  display: flex;
+  background: black;
+  width: 100%;
+  color: white;
+  padding-left: 20px;
+}
+
+.modal {
+  margin-top: 20px;
+  padding:20px;
+  background: #eee;
+  text-align: left;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
