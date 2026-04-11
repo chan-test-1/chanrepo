@@ -12,7 +12,7 @@ div {
   border-bottom: 1px solid grey;
 }
 
-.black-nav{
+.black-nav {
   display: flex;
   background: black;
   width: 100%;
@@ -22,7 +22,7 @@ div {
 
 .modal {
   margin-top: 20px;
-  padding:20px;
+  padding: 20px;
   background: #eee;
   text-align: left;
 }

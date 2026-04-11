@@ -126,7 +126,7 @@ console.log(settings.theme.darkMode);
 console.log(settings.theme["darkMode"]);  
 // 두개 동일 함.
 
-const key = "darkMode ;
+const key = "darkMode" ;
 
 settings.theme[key]  // 이렇게 변수를 이용해서 동적으로 사용할 수 있음. 난 잘안씀.
 settings.theme?.[key] // 옵셔널 채이닝
@@ -136,8 +136,12 @@ settings.theme?.[key] // 옵셔널 채이닝
 
 const obj = {};
 obj.prop = 42; 
+obj.name = 'jihoon'
 
 obj?.prop = 42; // 에러.    삽입 또는 수정 할 때 옵셔널 채이닝을 쓰지 않음.
+
+
+const data = [ 1, 2, null, 3]
 
 
 6. 기본값 설정.
@@ -176,19 +180,25 @@ const regex = new RegExp("pattern", "flags")
 
 둘중 어떤걸써도상관없는데 리터럴 표기법이 좀더간단해서 많이쓴다함.
 
+
+
+
+
 2. 정규식 메서드
 
 test()
 - 정규식에 해당하는 패턴이 문자열이 포함되어 있는지 확인.
 - 결과는 true / false
 
-let longSent = 'zsnldkfnzlksndfklnzskdf website name 안녕하세요 가나다라 하하하핳 name there there there there'
+let longSent = 'zsnldkfnzlksndfklnzskdf website 
+                name 안녕하세요 가나다라 하하하핳 
+                name there there there there'
 
 let regex = /website/;    //website라는 문자열을 찾아보자.
-console.log(regex.test(longSent)) // true
+console.log(longSent.test(regex)) // true
 
 regex = /weBsite/;
-console.log(regex.test(longSent)) // false
+console.log(longSent.test(regex)) // false
 
 
 
@@ -196,7 +206,7 @@ match()
 - 문자열에서 정규식과 일치하는 부분의 정보를 반환한다
 
 let regex = /name/;
-console.log(match(longSent));   // 몇번째 인덱스에있는지 찾아주고 문장도 찾아준다.
+console.log(longSent.match(regex));   // 몇번째 인덱스에있는지 찾아주고 문장도 찾아준다.
 
 
 
@@ -204,7 +214,7 @@ replace()
 - 문자열의 정규식과 일치하는 부분을 파라미터로 제공한 문자열로 치환한 문자열을 반환.
 
 let regex = /there/;
-console.log(longSent.replace(regex, 'Everyone));
+console.log(longSent.replace(regex, 'Everyone'));
 
 
 
@@ -291,7 +301,7 @@ y 플래그
 - "sticky" 모드(현재위치부터 검색)
 
 let regex = /a/y;
-let str = 'aabcabc";
+let str = 'aabcabc';
 
 console.log(regex.lastIndex); 
 console.log(regex.exec(str));  // ["a"] 첫째 인덱스 찾음.
@@ -303,7 +313,7 @@ console.log(regex.exec(str));  // 3번째 인덱스부턴 a가없기떄문에 nu
 
 
 let regex = /a/;
-let str = 'aabcabc";
+let str = 'aabcabc';
 
 console.log(regex.lastIndex); 
 console.log(regex.exec(str));  // ["a"] 첫째 인덱스에서 찾음
@@ -315,7 +325,7 @@ console.log(regex.exec(str));  // ["a"] 첫째 인덱스에서 찾음
 y플래그를 안넣으면 인덱스를 그자리에서만 계속찾고 y플래그를 넣으면 그다음으로 넘어간다.
 
 
-4. 메타문자.
+4. 메타문자. 
 
 . (쩜) 
 - 임의의 한 문자 (s플래그 안주면 줄바꿈 제외)
@@ -328,8 +338,7 @@ console.log(longSent.match(regex));
 
 
 
-const longSent = "
-Hello"
+const longSent = "\nHello"
 
 let regex = /..ello/g        // hello 앞에 문자열 2개는 없기떄문에 찾지 못함.
 
@@ -439,6 +448,7 @@ console.log(longSent.match(regex));  // ['11','12', '453']
 const longSent = '
 hello World
 started ::::
+hello world
 [2025-01-15 12:00:00] INFO : System started 
 [2025-01-15 12:00:00] ERROR : Missing configruration file
 [2025-01-15 12:00:00] WARNING : Low memory detected
@@ -453,7 +463,6 @@ m 은 위에서설명했지만 m을 안쓰면 모두 한줄로 인식하기때�
 
 console.log(longSent.match(regex)); ['[2025-01-15 12:00:00] INFO : System started', '[2025-01-15 12:00:00] ERROR : Missing configruration file', '[2025-01-15 12:00:00] WARNING : Low memory detected']
 
-
 const logs = longSent.match(regex);
 
 for(let i=0; i < logs.length; i++){
@@ -465,7 +474,7 @@ for(let i=0; i < logs.length; i++){
 
 $
 - 문자열의 끝
-- /world$/는 "hello world'와 일치 
+- /world$/는 "hello world"와 일치 
 
 let regex = /\w{3}\s*$/gm;        //  \w{3} 단어3개이상  \s*   공백 여러개   $ 로 끝나는것. /gm 전체, 줄마다 검색
 const logs = longSent.match(regex); ['com   ', 'org ', 'edu  \n', 'ted \n', 'urs   ']
@@ -476,12 +485,12 @@ const logs = longSent.match(regex); ['com   ', 'org ', 'edu  \n', 'ted \n', 'urs
 
 \b
 - 단어 경계
-- /\bhello\/b는 "hello" 와 일치
+- /\bhello\b/는 "hello" 와 일치
 
 const text = 'cat category scatter'; // cat이 3번들어감.
 console.log(text.match(/cat/g))  // ['cat', 'cat', 'cat']  그냥쓰면 다 뽑아오는데
 
-console.log(text.match(/\bcat\b/g))  // ['cat']  \b를 주면 다 일치하는것만.
+console.log(text.match(/cat\b/g))  // ['cat']  \b를 주면 다 일치하는것만.
 
 
 

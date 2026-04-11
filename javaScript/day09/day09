@@ -59,7 +59,7 @@ if(match){
 
 --------------
 
-const emailRegex = /^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/      ;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/      ;
 ;// 이메일을 만들 때 
 ;// 첫번째 :  /[a-zA-z0-9._%+-]+  >>>>>  [소문자영문,대문자영문,숫자,쩜,_,%,+,-] + 는 하나이상을 의미 
 ;// @ 뒤에(naver.co.) :  @[a-zA-Z0-9.-]+\.  >>>>>  @는 고정 [소문자영문,대문자영문,숫자,쩜,마이너스]\. 도메인주소는 언더바 플러스는 안들어오므로 제외  마지막 \. 은 무조건 도메인 다음 쩜이 찍히므로.
@@ -109,7 +109,14 @@ console.log(emailRegex.test("jihoon.+_-@naver.com"))
 console.log(emailRegex.test("jihoon123---"))
 
 
---------------------
+if(emailRegex.test(input)){
+    alert("회원가입이 정상적으로 되었습니다.")
+} else {
+    alert('이메일 형식이 맞지 않습니다.')
+}
+
+
+-------------------- 여기부터해야돼
 
 자바스크립트 자주쓰는 메소드(함수)
 
@@ -120,7 +127,6 @@ trim()
 
 let str = "   Hello World  "
 console.log(str.trim()) ;// Hello world
-
 
 toUpperCase() 
 - 문자열을 대문자로 변환
@@ -142,10 +148,12 @@ includes()
 let str = "hello world";
 console.log(str.includes("world")); // true
 
-let str = "011-234-4567";
+let str = "011-234-4567";          
 
 if(str.includes("011")){
     console.log("SKT 입니다")
+}else if (str.includes('016')){
+    console.log('LG 입니다.')
 }; 
 
 
@@ -231,6 +239,8 @@ Math.max(...value);
 
 console.log(Math.max(1,2,3,4,7,2)) ; // 결과:7 가장 큰 값
 
+
+
 const a = [1,5,6,10];
 ;//배열은 전개연산자 -> 전개연산자는 ... 으로 표시하며 배열을 펼쳐서 복사하거나 결합할 때 사용하는 문법.
 ; ex)  const a = [1,2,3] const b = [...a, 4,5];  --->  [1,2,3,4,5]
@@ -249,10 +259,12 @@ Math.pow(base, exponent);
 console.log(Math.pow(2, 3)); // 2의 3승  결과: 8
 
 
+
+
 Math.sqrt(x);  // sqrt = 스커트
 - 주어진 숫자의 제곱근을 반환
 
-console.log(Math.sqrt(16)); // 16의 제곱근 결과 : 4 
+console.log(Math.sqrt(30)); // 16의 제곱근 결과 : 
 
 
 Math.cbrt(x);  // 씨비알티
@@ -291,7 +303,7 @@ function getRandomInt(min, max){
     return Math.floor(Math.random() * (max - min +1)) + min;  floor 는 내림.   math.randome 이 0.9가 나왔고 floor(0.9 * (5 - 1 + 1)) + 1  4 + 1 = 5 최대 5가 나온다.
 }
 
-getRandomInt(1, 5)
+getRandomInt(0, 7)
 
 
 
@@ -302,7 +314,7 @@ getRandomInt(1, 5)
 
 
 
---------------------
+--------------------여기부터해야돼
 
 자바스크립트 생성자 함수 
 (리엑트같은게 있어서 클래스함수는 거의 안쓴다. 난 본적이없어. 그래도 기본만... 알아보자.)

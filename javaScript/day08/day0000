@@ -1,0 +1,5 @@
+const text = 'cat acat bcat ccat dcat catseki category scatter'; // cat이 3번들어감.
+
+console.log(text.match(/\bcat/g)) 
+
+

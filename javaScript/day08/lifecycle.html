@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        /* 
+      /* 
             페이지가 언제 로딩, 실행, 소멸 단계인지를 나타내주는 소스이다.
         */
-        console.log('----- 자바스크립트 로딩 단계 -----');
+      console.log("----- 자바스크립트 로딩 단계 -----");
 
-        document.addEventListener("DOMContentLoaded", function(){ // DOM트리가 완성되었을 떄 발생. (외부css, 외부 리소스가 로드되기전에 발생. 빠른실행 가능.)
-            console.log('----- 실행단계 1 -----')
-            
-            const message = document.createElement("div");
-            message.textContent = "DOM 로드 후 생성된 메세지입니다."
-            document.body.appendChild(message);
-        })
-        
-        window.onload = function() { // 페이지가 완전히 준비된 이후 실행. 즉 빠른 초기화작업이 필요하면 domcontentloaded, 모든준비가 완료된 후 작업하는건 onload
-            console.log('----- 실행단계 2 -----')
-        }
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM트리가 완성되었을 떄 발생. (외부css, 외부 리소스가 로드되기전에 발생. 빠른실행 가능.)
+        console.log("----- 실행단계 1 -----");
 
-        window.onbeforeunload = function() { //페이지를 떠나기 직전 발생하는 이벤트
-            console.log("----- 소멸단계 1 -----");
-            return window.confirm("정말 떠나시겠습니까?") // 사이트 끄면 브라우저 정책위반 block 걸림. 근데 뜨긴 뜬다. 인터넷에서 제공하는듯.
-            //debugger;
-        }
+        const message = document.createElement("div");
+        message.textContent = "DOM 로드 후 생성된 메세지입니다.";
+        document.body.appendChild(message);
+      });
 
-        window.onunload = function () { // 페이지를 떠난 직후 발생하는 이벤트
-            console.log("----- 소멸단계 2 -----")
-            //debugger;
+      window.onload = function () {
+        // 페이지가 완전히 준비된 이후 실행. 즉 빠른 초기화작업이 필요하면 domcontentloaded, 모든준비가 완료된 후 작업하는건 onload
+        console.log("----- 실행단계 2 -----");
+        //백엔드 데이터
 
+        const data = [1, 2, 3, 4, 5, 6, 7];
+        const button = document.getElementById("aaa");
+        button.innerText = data[0];
+      };
 
+      window.onbeforeunload = function () {
+        //페이지를 떠나기 직전 발생하는 이벤트
+        console.log("----- 소멸단계 1 -----");
+        return window.confirm("정말 떠나시겠습니까?"); // 사이트 끄면 브라우저 정책위반 block 걸림. 근데 뜨긴 뜬다. 인터넷에서 제공하는듯.
+        //debugger;
+      };
 
-            /* 파일 다운로드 */
-            const text = '페이지가 종료되었습니다.'
-            const blob = new Blob( [text], {type : 'text/plain'}) // Blob(binary(2진법) large object)은 이미지, 비디오, 텍스트 파일 등 파일 데이터를 메모리에 담는 방식. 
-            // 주요 사용처 : a태그, 다운로드기능구현, 업로드 전 가공, fetch로 받은 바이너리 데이터를 다룰 때
-            // 첫번째 인자는 데이터.
-            // 두번째 인자 type: 'text/plan' (일반텍스트) , text/html (html문서), application/json (json형식), image/png (이미지), application/pdf (pdf문서)
+      window.onunload = function () {
+        // 페이지를 떠난 직후 발생하는 이벤트
+        console.log("----- 소멸단계 2 -----");
+        //debugger;
 
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'jihoon.txt'; // 다운로드 파일명.
-            
-            document.body.appendChild(link); // html a태그 추가.
-            link.click();
-            document.body.removeChild(link); // 다운로드되고 태그 제거.
-        }
+        /* 파일 다운로드 */
+        const text = "페이지가 종료되었습니다.";
+        const blob = new Blob([text], { type: "text/plain" }); // Blob(binary(2진법) large object)은 이미지, 비디오, 텍스트 파일 등 파일 데이터를 메모리에 담는 방식.
+        // 주요 사용처 : a태그, 다운로드기능구현, 업로드 전 가공, fetch로 받은 바이너리 데이터를 다룰 때
+        // 첫번째 인자는 데이터.
+        // 두번째 인자 type: 'text/plan' (일반텍스트) , text/html (html문서), application/json (json형식), image/png (이미지), application/pdf (pdf문서)
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "jihoon.txt"; // 다운로드 파일명.
+
+        document.body.appendChild(link); // html a태그 추가.
+        link.click();
+        document.body.removeChild(link); // 다운로드되고 태그 제거.
+      };
     </script>
-</head>
-<body>
-    <h1>자바스크립트 생명주기 예제</h1>
+  </head>
+  <body>
+    <h1 id="aaa">자바스크립트 생명주기 예제</h1>
     <button id="removeButton">페이지지 내용 제거</button>
     <script>
-        console.log('----- 자바스크립트 로딩 단계 2 -----');
-        document.getElementById("removeButton").addEventListener("click", function(){
-            console.log("----- 업데이트 단계 -----")
-            document.body.innerHTML = '';
-            console.log("페이지 내용이 제거되었습니다.")
-        })
+      console.log("----- 자바스크립트 로딩 단계 2 -----");
+      document
+        .getElementById("removeButton")
+        .addEventListener("click", function () {
+          console.log("----- 업데이트 단계 -----");
+          document.body.innerHTML = "";
+          console.log("페이지 내용이 제거되었습니다.");
+        });
     </script>
-</body>
+  </body>
 </html>
-
-

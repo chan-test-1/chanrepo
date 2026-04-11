@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            margin: 10px 0;
-        }
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+      input,
+      button {
+        margin: 10px 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>String 메서드 활용</h1>
     <!-- for 을 쓰면 inputText라는 id를 가진 태그와 연결하겠다. -->
     <label for="inputText">문자열 입력: </label>
-    <input type="text" id="inputText" placeholder="문자열을 입력하세요.">
-    <button onclick="applyStringMethods()">메서드 적용 </button>
+    <input type="text" id="inputText" placeholder="문자열을 입력하세요." />
+    <button onclick="applyStringMethods()">메서드 적용</button>
 
     <h2>결과</h2>
-    <p id="trimResult">trim() : </p>
-    <p id="upperResult">toUpperCase() : </p>
-    <p id="lowerResult">toLowerCase() : </p>
-    <p id="includesResult">includes("hello") : </p>
-    <p id="resplaceResult">replace("hello", "javaScript") : </p>
-    <p id="splitResult">split(",") : </p>
+    <p id="trimResult">trim() :</p>
+    <p id="upperResult">toUpperCase() :</p>
+    <p id="lowerResult">toLowerCase() :</p>
+    <p id="includesResult">includes("a") :</p>
+    <p id="resplaceResult">replace("aaa", "ccc") :</p>
+    <p id="splitResult">split(",") :</p>
 
     <script>
-         /* applyStringMethods 함수를 만들어서 사용자가 입력한 데이터를 메소드를 각각 실행시켜서 해당 p태그에 결과를 집어넣어보자 */
-        /*  정답은 밑에 */
-        /*  정답 보지 말자*/
-        
-        
+      /* applyStringMethods 함수를 만들어서 사용자가 입력한 데이터를 메소드를 각각 실행시켜서 해당 p태그에 결과를 집어넣어보자 */
+      /*  정답은 밑에 */
+      /*  정답 보지 말자*/
+
+      function applyStringMethods() {
+        const data = document.getElementById("inputText").value;
+        console.log(data);
+
+        document.getElementById("trimResult").innerText =
+          "trim() :" + data.trim();
+
+        document.getElementById("upperResult").innerText =
+          "toUpperCase() :" + data.toUpperCase();
+
+        document.getElementById("lowerResult").innerText =
+          "toLowerCase() :" + data.toLowerCase();
+
+        document.getElementById("includesResult").innerText =
+          "includes('a') :" + data.includes("a");
+
+        document.getElementById("resplaceResult").innerText =
+          "replace('aaa','ccc') :" + data.replace("aaa", "ccc");
+
+        document.getElementById("splitResult").innerText =
+          "split(',') :" + JSON.stringify(data.split(","));
+      }
     </script>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- 
     function applyStringMethods() {
@@ -77,4 +85,3 @@
             document.getElementById("splitResult").innerText = document.getElementById("splitResult").innerText + data.split(","); 
         }
 -->
-

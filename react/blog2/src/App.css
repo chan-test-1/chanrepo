@@ -49,9 +49,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  
-  display: flex;        /* 가로 정렬 */
-  gap: 10px;            /* 박스 사이 간격 */
+
+  display: flex; /* 가로 정렬 */
+  gap: 10px; /* 박스 사이 간격 */
 }
 
 .list_day li {
@@ -61,8 +61,8 @@
   border: 1px solid #e5e9f2;
   font-size: 18px;
   transition: 0.2s;
-  min-width: 60px;       /* 너무 작아지지 않도록 */
-  text-align: center;    /* 텍스트 가운데 정렬 */
+  min-width: 60px; /* 너무 작아지지 않도록 */
+  text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 .list_day li:hover {
@@ -80,21 +80,22 @@
 table {
   width: 100%;
   border-collapse: separate; /* collapse 대신 separate */
-  border-spacing: 0;         /* 여백 없앰 */
-  border: 2px solid #999;    /* 외곽선 진하게 */
+  border-spacing: 0; /* 여백 없앰 */
+  border: 2px solid #999; /* 외곽선 진하게 */
   border-radius: 8px;
   overflow: hidden;
   margin-top: 30px;
 }
 
-table th, table td {
+table th,
+table td {
   border-bottom: 1px solid #ccc; /* 행 구분선 */
   padding: 14px;
   font-size: 18px;
 }
 
 table tr:last-child td {
-  border-bottom: none;  /* 마지막 줄 아래선 제거 */
+  border-bottom: none; /* 마지막 줄 아래선 제거 */
 }
 
 table button {
@@ -135,7 +136,7 @@ div {
   border-bottom: 1px solid grey;
 }
 
-.black-nav{
+.black-nav {
   display: flex;
   background: black;
   width: 100%;
@@ -145,7 +146,7 @@ div {
 
 .modal {
   margin-top: 20px;
-  padding:20px;
+  padding: 20px;
   background: #eee;
   text-align: left;
 }

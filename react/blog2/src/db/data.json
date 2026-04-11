@@ -1,66 +1,158 @@
 {
-  "days": [
+  "products": [
     {
-      "id": "1",
-      "day": 1
+      "id": 1,
+      "name": "사과",
+      "price": 1000,
+      "category": "과일"
     },
     {
-      "id": "2",
-      "day": 2
+      "id": 2,
+      "name": "바나나",
+      "price": 1500,
+      "category": "과일"
     },
     {
-      "id": "3",
-      "day": 3
+      "id": 3,
+      "name": "우유",
+      "price": 2500,
+      "category": "유제품"
     }
   ],
-  "words": [
+  "users": [
     {
-      "id": "1",
-      "day": 1,
-      "eng": "book",
-      "kor": "책",
-      "isDone": false
+      "id": 1,
+      "username": "kim",
+      "age": 30
     },
     {
-      "id": "2",
-      "day": 1,
-      "eng": "apple",
-      "kor": "사과",
-      "isDone": false
+      "id": 2,
+      "username": "lee",
+      "age": 25
     },
     {
-      "id": "3",
-      "day": 1,
-      "eng": "banana",
-      "kor": "바나나",
-      "isDone": false
+      "id": "2642",
+      "name": "장항준",
+      "addr": "상암동",
+      "job": "영화감독",
+      "age": "55"
+    }
+  ],
+  "animal": [
+    {
+      "name": "dog",
+      "sound": "멍멍",
+      "jungsu": "정수"
     },
     {
-      "id": "4",
-      "day": 2,
-      "eng": "car",
-      "kor": "자동차",
-      "isDone": false
+      "name": "cat",
+      "sound": "야옹",
+      "jungsu": "정수"
     },
     {
-      "id": "5",
-      "day": 3,
-      "eng": "pen",
-      "kor": "펜",
-      "isDone": false
+      "name": "frog",
+      "sound": "개굴개굴",
+      "jungsu": "비정수"
     },
     {
-      "id": "7675",
-      "eng": "keyboard",
-      "kor": "키보드",
-      "isDone": false
+      "name": "aaa",
+      "sound": "rrr",
+      "jungsu": "정수"
     },
     {
-      "id": "5f79",
-      "day": "3",
-      "eng": "haha",
-      "kor": "하하",
-      "isDone": false
+      "name": "bbb",
+      "sound": "sss",
+      "jungsu": "정수"
+    }
+  ],
+  "fruits": [
+    {
+      "name": "apple",
+      "color": "red"
+    },
+    {
+      "name": "banana",
+      "color": "yellow"
+    },
+    {
+      "name": "kiwi",
+      "color": "green"
+    },
+    {
+      "name": "orange",
+      "color": "orange"
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "name": "이지훈",
+      "addr": "신대방",
+      "job": "개발자",
+      "age": "38"
+    },
+    {
+      "id": 2,
+      "name": "이찬이",
+      "addr": "상계동",
+      "job": "강사",
+      "age": "40"
+    },
+    {
+      "id": 3,
+      "name": "찬돌",
+      "addr": "중계동",
+      "job": "개발자",
+      "age": "30"
+    },
+    {
+      "id": 4,
+      "name": "소리",
+      "addr": "방배동",
+      "job": "백수",
+      "age": "37"
+    },
+    {
+      "id": 5,
+      "name": "소원",
+      "addr": "노원",
+      "job": "유투버",
+      "age": "40"
+    },
+    {
+      "id": 6,
+      "name": "이찬순",
+      "addr": "창동",
+      "job": "백수",
+      "age": "25"
+    },
+    {
+      "id": "a92a",
+      "name": "이백수",
+      "addr": "서울시 ",
+      "job": "프리",
+      "age": "30"
+    },
+    {
+      "id": "9601",
+      "name": "rrrr",
+      "addr": "rrrr",
+      "job": "rrr",
+      "age": "022"
+    },
+    {
+      "id": "4c96",
+      "name": "rrrr",
+      "addr": "rrrr",
+      "job": "rrr",
+      "age": "022"
+    },
+    {
+      "id": "bb03",
+      "name": "rrrr",
+      "addr": "rrrr",
+      "job": "rrr",
+      "age": "022"
     }
   ]
 }
