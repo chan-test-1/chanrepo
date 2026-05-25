@@ -12,6 +12,7 @@ import ChanTable from "./component/study3/ChanTable";
 import ChanTable1 from "./component/study3/ChanTable1";
 import AgGrid1 from "./component/study3/AgGrid1";
 import Antd1 from "./component/study3/Antd1";
+import AntdPractice from "./component/study3/AntdPractice";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <ChanTable1 />
       <AgGrid1 />
       <Antd1 />
+      <AntdPractice />
     </div>
   );
 }

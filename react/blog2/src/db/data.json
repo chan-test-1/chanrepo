@@ -1,19 +1,19 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "사과",
       "price": 1000,
       "category": "과일"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "바나나",
       "price": 1500,
       "category": "과일"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "우유",
       "price": 2500,
       "category": "유제품"
@@ -21,12 +21,12 @@
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "kim",
       "age": 30
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "lee",
       "age": 25
     },
@@ -42,117 +42,105 @@
     {
       "name": "dog",
       "sound": "멍멍",
-      "jungsu": "정수"
+      "jungsu": "정수",
+      "id": "b528"
     },
     {
       "name": "cat",
       "sound": "야옹",
-      "jungsu": "정수"
+      "jungsu": "정수",
+      "id": "986d"
     },
     {
       "name": "frog",
       "sound": "개굴개굴",
-      "jungsu": "비정수"
+      "jungsu": "비정수",
+      "id": "4d5b"
     },
     {
       "name": "aaa",
       "sound": "rrr",
-      "jungsu": "정수"
+      "jungsu": "정수",
+      "id": "5af3"
     },
     {
       "name": "bbb",
       "sound": "sss",
-      "jungsu": "정수"
+      "jungsu": "정수",
+      "id": "2367"
     }
   ],
   "fruits": [
     {
       "name": "apple",
-      "color": "red"
+      "color": "red",
+      "id": "13fa"
     },
     {
       "name": "banana",
-      "color": "yellow"
+      "color": "yellow",
+      "id": "7054"
     },
     {
       "name": "kiwi",
-      "color": "green"
+      "color": "green",
+      "id": "a843"
     },
     {
       "name": "orange",
-      "color": "orange"
+      "color": "orange",
+      "id": "be0a"
     }
   ],
   "people": [
     {
-      "id": 1,
+      "id": "1",
       "name": "이지훈",
       "addr": "신대방",
       "job": "개발자",
-      "age": "38"
+      "age": 39
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "이찬이",
       "addr": "상계동",
       "job": "강사",
-      "age": "40"
+      "age": 29
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "찬돌",
       "addr": "중계동",
       "job": "개발자",
       "age": "30"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "소리",
       "addr": "방배동",
       "job": "백수",
       "age": "37"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "소원",
       "addr": "노원",
       "job": "유투버",
       "age": "40"
     },
     {
-      "id": 6,
+      "id": "3621",
       "name": "이찬순",
       "addr": "창동",
       "job": "백수",
       "age": "25"
     },
     {
-      "id": "a92a",
-      "name": "이백수",
-      "addr": "서울시 ",
-      "job": "프리",
-      "age": "30"
-    },
-    {
-      "id": "9601",
-      "name": "rrrr",
-      "addr": "rrrr",
-      "job": "rrr",
-      "age": "022"
-    },
-    {
-      "id": "4c96",
-      "name": "rrrr",
-      "addr": "rrrr",
-      "job": "rrr",
-      "age": "022"
-    },
-    {
-      "id": "bb03",
-      "name": "rrrr",
-      "addr": "rrrr",
-      "job": "rrr",
-      "age": "022"
+      "id": "6e97",
+      "name": "이지훈121",
+      "addr": "읾ㄴㅇㄹ1ㅇ람",
+      "job": "ㅁㄴㅇㄹ",
+      "age": 1
     }
   ]
 }

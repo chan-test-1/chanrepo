@@ -17,6 +17,7 @@ function Antd1() {
   const [addr, setAddr] = useState(""); // 주소
   const [job, setJob] = useState(""); // 직업
   const [age, setAge] = useState(0); // 나이
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]); //체크박스 선택 한 로우 키
 
   const columns = [
     { title: "이름", dataIndex: "name" },
@@ -25,10 +26,12 @@ function Antd1() {
     { title: "나이", dataIndex: "age" },
   ];
 
+  /* useeffect 공간 */
   useEffect(() => {
     fetchData();
   }, []);
 
+  /* api 함수 */
   const fetchData = async () => {
     // 데이터 조회 함수
     const res = await api.get("/people");
@@ -39,6 +42,7 @@ function Antd1() {
   const addUser = async () => {
     // 등록 함수.
     const newUser = {
+      //등록 할 새로운 유저의 정보를 객체에 담는다.
       name: name,
       addr: addr,
       job: job,
@@ -52,8 +56,53 @@ function Antd1() {
         alert("저장되었습니다.");
         onFinish();
         fetchData();
+        addUserReset();
       }
     });
+  };
+
+  // ✅ 삭제 (하나씩)
+  const deleteUsers = async () => {
+    if (selectedRowKeys.length === 0) {
+      alert("선택된 데이터 없음");
+      return;
+    }
+    const isOk = window.confirm("삭제하시겠습니까?");
+
+    if (!isOk) {
+      console.log("취소됨");
+      return; // ❌ 여기서 종료
+    }
+
+    try {
+      // ⭐ 핵심 (순차 삭제)
+      for (const id of selectedRowKeys) {
+        await api.delete(`/people/${id}`);
+      }
+
+      alert("삭제 완료");
+
+      setSelectedRowKeys([]);
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* 이벤트함수 */
+  const addUserReset = () => {
+    setName("");
+    setAddr("");
+    setJob("");
+    setAge(0);
+  };
+
+  // ✅ 체크박스
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (keys) => {
+      setSelectedRowKeys(keys);
+    },
   };
 
   const onFinish = (values) => {
@@ -82,21 +131,25 @@ function Antd1() {
     console.log(e.target.value);
     setAge(e.target.value);
   };
+
+  console.log("selectedRowKeys", selectedRowKeys);
   return (
     <>
       =========================Antd1=====================
-      <Button type="primary">버튼</Button>
-      <Row>
-        <Col span={12}>왼쪽</Col>
-        <Col span={12}>오른쪽</Col>
-      </Row>
-      <Table columns={columns} dataSource={rowData} />
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={rowData}
+        rowSelection={rowSelection}
+      />
       <Button onClick={() => setOpen(true)}>열기</Button>
-      <span>{name}</span>
+      <Button danger style={{ marginLeft: 10 }} onClick={deleteUsers}>
+        삭제
+      </Button>
       <Modal
         open={open}
         onOk={addUser}
-        onCancel={() => onFinish}
+        onCancel={onFinish}
         okText="저장"
         cancelText="취소"
       >
